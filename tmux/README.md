@@ -22,19 +22,15 @@ While going through its setup you'll be able to select [Nerd Fonts](https://gith
 
 ## Setup Tmux
 
-1. Clone this repository
+After you went through the main README file and applied dotfiles, do the followings:
 
-```sh
-git clone https://github.com/ducktordanny/tmux-config.git ~/.config/tmux
-```
-
-2. Clone package manager repository
+1. Clone package manager repository
 
 ```sh
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-3. Install tmux
+2. Install tmux
 
 With Homebrew:
 
@@ -48,13 +44,10 @@ With apt:
 sudo apt install -y tmux
 ```
 
-4. Start Tmux & install packages
+3. Start Tmux & install packages
 
 ```sh
 tmux
 ```
 
 To install packages, press: `<C-Space>I`
-
-
-
