@@ -1,0 +1,62 @@
+# Changing Window Focus
+
+# Change window focus within space
+hyper - j : yabai -m window --focus south
+hyper - k : yabai -m window --focus north
+hyper - h : yabai -m window --focus west
+hyper - l : yabai -m window --focus east
+
+# Change focus between external displays (left and right)
+hyper - w : yabai -m displays --focus west
+hyper - e : yabai -m displays --focus east
+
+# Modify the Layout
+
+# Rotate layout clockwise
+hyper - r : yabai -m space --rotate 270
+# Flip along y-axis
+hyper - y : yabai -m space --mirror y-axis
+# Flip along x-axis
+hyper - x : yabai -m space --mirror x-axis
+
+# Modifying window size
+
+# Maximize
+hyper - m : yabai -m window --toggle zoom-fullscreen
+
+# Moving windows around
+
+# Swap
+ctrl + alt - k : yabai -m window --swap north
+ctrl + alt - j : yabai -m window --swap south
+ctrl + alt - h : yabai -m window --swap west
+ctrl + alt - l : yabai -m window --swap east
+
+# Warp
+ctrl + alt - u : yabai -m window --warp west
+ctrl + alt - i : yabai -m window --warp east
+
+# Move window to space <number>
+hyper - 1 : yabai -m window --space 1;
+hyper - 2 : yabai -m window --space 2;
+hyper - 3 : yabai -m window --space 3;
+hyper - 4 : yabai -m window --space 4;
+hyper - 5 : yabai -m window --space 5;
+hyper - 6 : yabai -m window --space 6;
+hyper - 7 : yabai -m window --space 7;
+hyper - 8 : yabai -m window --space 8;
+hyper - 9 : yabai -m window --space 9;
+
+# move window between displays
+hyper - d : yabai -m window --display west; yabai -m display --focus west;
+hyper - f : yabai -m window --display east; yabai -m display --focus east;
+
+# Resize window
+ctrl + cmd - h : yabai -m window --resize left:-20:0 ; yabai -m window --resize right:-20:0
+ctrl + cmd - j : yabai -m window --resize bottom:0:20 ; yabai -m window --resize top:0:20
+ctrl + cmd - k : yabai -m window --resize top:0:-20 ; yabai -m window --resize bottom:0:-20
+ctrl + cmd - l : yabai -m window --resize right:20:0 ; yabai -m window --resize left:20:0
+
+# Yabai start/stop
+hyper - s : yabai --start-service
+hyper - q : yabai --stop-service
