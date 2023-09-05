@@ -7,10 +7,10 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- move around between splits better:
-vim.keymap.set('n', '<C-h>', ':TmuxNavigateLeft<cr>')
-vim.keymap.set('n', '<C-l>', ':TmuxNavigateRight<cr>')
-vim.keymap.set('n', '<C-j>', ':TmuxNavigateDown<cr>')
-vim.keymap.set('n', '<C-k>', ':TmuxNavigateUp<cr>')
+vim.keymap.set('n', '<C-h>', '<cmd>TmuxNavigateLeft<cr>')
+vim.keymap.set('n', '<C-l>', '<cmd>TmuxNavigateRight<cr>')
+vim.keymap.set('n', '<C-j>', '<cmd>TmuxNavigateDown<cr>')
+vim.keymap.set('n', '<C-k>', '<cmd>TmuxNavigateUp<cr>')
 
 -- Greates remap ever (according to ThePrimeagen)
 vim.keymap.set('x', '<leader>p', '"_dP')
@@ -32,32 +32,32 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Undotree stuff
-vim.keymap.set('n', '<leader>u', ':UndotreeToggle<cr>', { desc = '[U]ndotree' })
+vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<cr>', { desc = '[U]ndotree' })
 
 -- Nvim Tree
-vim.keymap.set('n', '<leader>nt', ':NvimTreeToggle<cr>', { desc = '[N]vimTree [T]oggle' })
-vim.keymap.set('n', '<leader>ns', ':NvimTreeFindFile<cr>', { desc = '[N]vimTree [S]earch_file' })
-vim.keymap.set('n', '<leader>nr', ':NvimTreeRefresh<cr>', { desc = '[N]vimTree [R]efresh' })
+vim.keymap.set('n', '<leader>nt', '<cmd>NvimTreeToggle<cr>', { desc = '[N]vimTree [T]oggle' })
+vim.keymap.set('n', '<leader>ns', '<cmd>NvimTreeFindFile<cr>', { desc = '[N]vimTree [S]earch_file' })
+vim.keymap.set('n', '<leader>nr', '<cmd>NvimTreeRefresh<cr>', { desc = '[N]vimTree [R]efresh' })
 
 -- quick switch between buffers and close them etc
-vim.keymap.set('n', '<leader>W', ':bp|bd #<cr>', { desc = 'Close current buffer window and open previous' })
-vim.keymap.set('n', '<leader>WW', ':%bd|e#|bd#<cr>', { desc = 'Close all buffers but this' })
-vim.keymap.set('n', '<leader>WS', ':buffers<cr>:bd ', { desc = 'Select buffers to close' })
-vim.keymap.set('n', 'N', ':bnext<cr>', { desc = 'buffer [n]ext' })
-vim.keymap.set('n', 'P', ':bprevious<cr>', { desc = 'buffer [p]revious' })
+vim.keymap.set('n', '<leader>W', '<cmd>bp|bd #<cr>', { desc = 'Close current buffer window and open previous' })
+vim.keymap.set('n', '<leader>WW', '<cmd>%bd|e#|bd#<cr>', { desc = 'Close all buffers but this' })
+vim.keymap.set('n', '<leader>WS', '<cmd>buffers<cr>:bd ', { desc = 'Select buffers to close' })
+vim.keymap.set('n', 'N', '<cmd>bnext<cr>', { desc = 'buffer [n]ext' })
+vim.keymap.set('n', 'P', '<cmd>bprevious<cr>', { desc = 'buffer [p]revious' })
 
 -- git, gitsigns and vgit remaps
-vim.keymap.set('n', '<leader>gl', ':Flogsplit<cr>', { desc = '[G]it [L]og' })
-vim.keymap.set('n', '<leader>gr', ':Gitsigns refresh<cr>', { desc = '[G]itsigns [R]efresh' })
-vim.keymap.set('n', '<leader>ga', ':Git add --all<cr>', { desc = '[G]it add [a]ll' })
-vim.keymap.set('n', '<leader>gc', ':Git commit -m ""', { desc = '[G]it [C]ommit' })
-vim.keymap.set('n', '<leader>gs', ':Git status<cr>', { desc = '[G]it [S]tatus' })
-vim.keymap.set('n', '<leader>gp', ':Git push', { desc = '[G]it [P]ush' })
-vim.keymap.set('n', '<leader>gf', ':Git fetch', { desc = '[G]it [F]etch' })
-vim.keymap.set('n', '<leader>gb', ':Git blame<cr>', { desc = '[G]it [B]lame' })
-vim.keymap.set('n', '<leader>gd', ':VGit project_diff_preview<cr>', { desc = '[G]it [D]iff preview' })
-vim.keymap.set('n', '<leader>l', ':LazyGit<cr>', { desc = '[L]azyGit' })
-vim.keymap.set('n', '<leader>gu', ':Gitsigns reset_hunk<cr>', { desc = '[G]it [U]ndo hunk' })
+vim.keymap.set('n', '<leader>gl', '<cmd>Flogsplit<cr>', { desc = '[G]it [L]og' })
+vim.keymap.set('n', '<leader>gr', '<cmd>Gitsigns refresh<cr>', { desc = '[G]itsigns [R]efresh' })
+vim.keymap.set('n', '<leader>ga', '<cmd>Git add --all<cr>', { desc = '[G]it add [a]ll' })
+vim.keymap.set('n', '<leader>gc', '<cmd>Git commit -m ""', { desc = '[G]it [C]ommit' })
+vim.keymap.set('n', '<leader>gs', '<cmd>Git status<cr>', { desc = '[G]it [S]tatus' })
+vim.keymap.set('n', '<leader>gp', '<cmd>Git push', { desc = '[G]it [P]ush' })
+vim.keymap.set('n', '<leader>gf', '<cmd>Git fetch', { desc = '[G]it [F]etch' })
+vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<cr>', { desc = '[G]it [B]lame' })
+vim.keymap.set('n', '<leader>gd', '<cmd>VGit project_diff_preview<cr>', { desc = '[G]it [D]iff preview' })
+vim.keymap.set('n', '<leader>l', '<cmd>LazyGit<cr>', { desc = '[L]azyGit' })
+vim.keymap.set('n', '<leader>gu', '<cmd>Gitsigns reset_hunk<cr>', { desc = '[G]it [U]ndo hunk' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -66,7 +66,7 @@ vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Glow
-vim.keymap.set('n', '<leader>md', ':Glow<cr>', { desc = 'Glow [M]ark[d]own' })
+vim.keymap.set('n', '<leader>md', '<cmd>Glow<cr>', { desc = 'Glow [M]ark[d]own' })
 
 -- Better visual mode indenting
 vim.keymap.set('v', '<', '<gv')
