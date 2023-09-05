@@ -119,7 +119,7 @@ return {
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
-  -- Fuzzy Finder (files, lsp, etc)
+  -- Telescope, fuzzy finder, etc.
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
   {
     -- NOTE: make sure ripgrep is installed
@@ -129,8 +129,24 @@ return {
       return vim.fn.executable 'make' == 1
     end,
   },
-
-  -- Highlight, edit, and navigate code
+  {
+    'AckslD/nvim-neoclip.lua',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'ibhagwan/fzf-lua',
+    },
+    config = function()
+      require('neoclip').setup {
+        keys = {
+          telescope = {
+            i = {
+              paste_behind = 'C-o',
+            },
+          },
+        },
+      }
+    end,
+  },
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
@@ -146,6 +162,8 @@ return {
     'nvim-treesitter/nvim-treesitter-context',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
+
+  -- FUN
   -- NOTE: For practicing some vim moves uncomment and install the plugin then do :VimBeGood
   -- 'ThePrimeagen/vim-be-good',
 }
