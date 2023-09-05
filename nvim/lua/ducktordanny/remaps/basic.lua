@@ -34,6 +34,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Undotree stuff
 vim.keymap.set('n', '<leader>u', ':UndotreeToggle<cr>', { desc = '[U]ndotree' })
 
+-- Nvim Tree
 vim.keymap.set('n', '<leader>nt', ':NvimTreeToggle<cr>', { desc = '[N]vimTree [T]oggle' })
 vim.keymap.set('n', '<leader>ns', ':NvimTreeFindFile<cr>', { desc = '[N]vimTree [S]earch_file' })
 vim.keymap.set('n', '<leader>nr', ':NvimTreeRefresh<cr>', { desc = '[N]vimTree [R]efresh' })

@@ -1,4 +1,7 @@
 return {
+  -- Git like undo tree to manage local history
+  'mbbill/undotree',
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
