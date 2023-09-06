@@ -22,7 +22,7 @@ prettier.setup {
   filetypes,
 }
 
-ft('typescript,javascript,typescriptreact'):fmt 'prettier'
+ft('typescript,javascript,typescriptreact,html,scss'):fmt 'prettier'
 ft('lua'):fmt 'stylua'
 
 guard.setup {
