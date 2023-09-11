@@ -24,6 +24,7 @@ end
 local get_worktree_paths = function()
   local project_path = vim.fn.getcwd()
   local worktrees = vim.fn.systemlist 'git worktree list'
+
   local tree_paths = {}
   local bare_path = ''
 
@@ -40,7 +41,7 @@ local get_worktree_paths = function()
   end
 
   local current_tree = '-'
-  if project_path ~= bare_path then
+  if project_path ~= bare_path and bare_path ~= '' then
     current_tree = project_path:sub(#bare_path + 2)
   end
 
