@@ -30,7 +30,7 @@ local get_filtered_trees = function()
     for match in worktree:gmatch '%S+' do
       table.insert(info, match)
     end
-    if info[1] ~= project_path then
+    if info[1] ~= project_path and info[2] ~= '(bare)' then
       table.insert(output, info[1])
     end
   end
