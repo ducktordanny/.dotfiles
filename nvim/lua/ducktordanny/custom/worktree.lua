@@ -6,6 +6,7 @@ local action_state = require 'telescope.actions.state'
 local themes = require 'telescope.themes'
 
 local auto_session = require 'auto-session'
+local nvim_tree_api = require 'nvim-tree.api'
 
 local delete_opened_buffers = function()
   local all_buffers = vim.api.nvim_list_bufs()
@@ -60,13 +61,14 @@ end
 local handle_worktree_switch = function(tree_path)
   local project_path = vim.fn.getcwd()
 
+  vim.cmd ':wa'
   auto_session.SaveSession(project_path)
   delete_opened_buffers()
   if project_path == tree_path then
     return
   end
   vim.cmd('cd ' .. tree_path)
-  require('nvim-tree.api').tree.change_root(tree_path)
+  nvim_tree_api.tree.change_root(tree_path)
   auto_session.RestoreSession(tree_path)
 end
 
