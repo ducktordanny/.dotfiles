@@ -15,7 +15,7 @@ local delete_opened_buffers = function()
     local buf_name = vim.fn.bufname(bufnr)
 
     if vim.fn.findfile(buf_name, project_path) then
-      vim.api.nvim_buf_delete(bufnr, { force = true })
+      vim.api.nvim_buf_delete(bufnr, { force = false })
     end
   end
 end
