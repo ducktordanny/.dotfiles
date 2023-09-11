@@ -20,10 +20,11 @@ local delete_opened_buffers = function()
   end
 end
 
-local get_filtered_trees = function()
+local get_worktree_paths = function()
   local project_path = vim.fn.getcwd()
   local worktrees = vim.fn.systemlist 'git worktree list'
-  local output = {}
+  local tree_paths = {}
+  local bare_path = ''
 
   for _, worktree in ipairs(worktrees) do
     local info = {}
@@ -31,42 +32,61 @@ local get_filtered_trees = function()
       table.insert(info, match)
     end
     if info[1] ~= project_path and info[2] ~= '(bare)' then
-      table.insert(output, info[1])
+      table.insert(tree_paths, info[1])
+    elseif info[2] == '(bare)' then
+      bare_path = info[1]
     end
   end
 
-  return output
+  local current_tree = '-'
+  if project_path ~= bare_path then
+    current_tree = project_path:sub(#bare_path + 2)
+  end
+
+  return { tree_paths = tree_paths, bare_path = bare_path, current_tree = current_tree }
 end
 
-local handle_worktree_switch = function()
+local get_tree_names = function(tree_paths, bare_path)
+  local tree_names = {}
+
+  for _, path in ipairs(tree_paths) do
+    local name = path:sub(#bare_path + 2)
+    table.insert(tree_names, name)
+  end
+
+  return tree_names
+end
+
+local handle_worktree_switch = function(tree_path)
   local project_path = vim.fn.getcwd()
 
   auto_session.SaveSession(project_path)
   delete_opened_buffers()
-  local selection = action_state.get_selected_entry()
-  if project_path == selection[1] then
+  if project_path == tree_path then
     return
   end
-  vim.cmd('cd ' .. selection[1])
-  require('nvim-tree.api').tree.change_root(selection[1])
-  auto_session.RestoreSession(selection[1])
+  vim.cmd('cd ' .. tree_path)
+  require('nvim-tree.api').tree.change_root(tree_path)
+  auto_session.RestoreSession(tree_path)
 end
 
 local open_worktree_window = function(opts)
   opts = opts or {}
-  local trees = get_filtered_trees()
+  local trees = get_worktree_paths()
+  local tree_names = get_tree_names(trees.tree_paths, trees.bare_path)
 
   pickers
     .new(opts, {
-      prompt_title = 'Worktrees',
+      prompt_title = 'Worktrees (' .. trees.current_tree .. ')',
       finder = finders.new_table {
-        results = trees,
+        results = tree_names,
       },
       sorter = conf.generic_sorter(opts),
       attach_mappings = function(prompt_bufnr, _)
         actions.select_default:replace(function()
           actions.close(prompt_bufnr)
-          handle_worktree_switch()
+          local selection = action_state.get_selected_entry()
+          handle_worktree_switch(trees.tree_paths[selection.index])
         end)
         return true
       end,
