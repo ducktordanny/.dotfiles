@@ -71,3 +71,6 @@ vim.keymap.set('n', '<leader>md', '<cmd>Glow<cr>', { desc = 'Glow [M]ark[d]own' 
 -- Better visual mode indenting
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
+
+-- Remove search highlight
+vim.keymap.set('n', '<leader>sn', '<cmd>noh<cr>', { desc = 'Remove search highlight' })
