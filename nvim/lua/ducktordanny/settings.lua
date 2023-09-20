@@ -58,6 +58,3 @@ vim.o.splitbelow = true
 
 -- Scroll thingy
 vim.o.scrolloff = 8
-
-vim.opt.spelllang = 'en_us'
-vim.opt.spell = true
