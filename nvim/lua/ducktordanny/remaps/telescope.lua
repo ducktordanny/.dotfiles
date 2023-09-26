@@ -21,11 +21,7 @@ telescope.setup {
       i = telescope_mappings,
       n = telescope_mappings,
     },
-    file_ignore_patterns = {
-      'node_modules',
-      'build',
-      'dist',
-    },
+    file_ignore_patterns = {},
   },
 }
 

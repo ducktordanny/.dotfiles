@@ -2,7 +2,7 @@ return {
   -- Nx console features like for NeoVim
   {
     'Equilibris/nx.nvim',
-    dependecies = {
+    dependencies = {
       'nvim-telescope/telescope.nvim',
     },
     config = function()
@@ -60,9 +60,9 @@ return {
   -- Harpoon
   {
     'ThePrimeagen/harpoon',
-    dependecies = {
-      'plenary.nvim',
-      'telescope.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'nvim-lua/plenary.nvim',
     },
     config = function()
       require('harpoon').setup {
