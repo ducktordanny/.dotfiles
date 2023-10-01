@@ -1,6 +1,5 @@
 local prettier = require 'prettier'
-local ft = require 'guard.filetype'
-local guard = require 'guard'
+local conform = require 'conform'
 
 local filetypes = {
   'css',
@@ -22,12 +21,40 @@ prettier.setup {
   filetypes,
 }
 
-ft('typescript,javascript,typescriptreact,html,scss'):fmt 'prettier'
-ft('lua'):fmt 'stylua'
-
-guard.setup {
-  -- the only options for the setup function
-  fmt_on_save = true,
-  -- Use lsp if no formatter was defined for this filetype
-  lsp_as_default_formatter = false,
+conform.setup {
+  formatters_by_ft = {
+    lua = { 'stylua' },
+    python = { 'isort', 'black' },
+    javascript = { 'prettier' },
+    typescript = { 'prettier' },
+    javascriptreact = { 'prettier' },
+    typescriptreact = { 'prettier' },
+    svelte = { 'prettier' },
+    css = { 'prettier' },
+    html = { 'prettier' },
+    json = { 'prettier' },
+    yaml = { 'prettier' },
+    markdown = { 'prettier' },
+    go = { 'gofmt' },
+  },
+  format_on_save = {
+    lsp_fallback = true,
+    async = false,
+    timeout_ms = 500,
+  },
 }
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
+  callback = function(args)
+    conform.format { bufnr = args.buf }
+  end,
+})
+
+vim.keymap.set({ 'n', 'v' }, '<leader>ff', function()
+  conform.format {
+    lsp_fallback = true,
+    async = false,
+    timeout_ms = 500,
+  }
+end, { desc = 'Format file in normal or range in visual mode' })

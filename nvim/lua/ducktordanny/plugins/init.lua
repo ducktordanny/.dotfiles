@@ -34,10 +34,9 @@ return {
   },
   -- Formatting
   {
-    'nvimdev/guard.nvim',
-    dependencies = {
-      'ducktordanny/nvim-lspconfig',
-    },
+    'stevearc/conform.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {},
   },
   'MunifTanjim/prettier.nvim',
   'RRethy/vim-illuminate',
