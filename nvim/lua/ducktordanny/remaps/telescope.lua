@@ -27,7 +27,6 @@ telescope.setup {
 
 -- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, 'fzf')
-pcall(telescope.load_extension, 'neoclip')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
@@ -39,7 +38,6 @@ vim.keymap.set('n', '<leader>sg', telescope.extensions.live_grep_args.live_grep_
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
 vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch [O]ldfiles' })
-vim.keymap.set('n', '<leader>sy', telescope.extensions.neoclip.default, { desc = '[S]earch [Y]ank' })
 
 vim.keymap.set('n', '<leader>h', harpoon_ui.toggle_quick_menu)
 vim.keymap.set('n', '<C-y>', harpoon_mark.add_file)

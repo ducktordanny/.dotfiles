@@ -132,24 +132,6 @@ return {
     end,
   },
   {
-    'AckslD/nvim-neoclip.lua',
-    dependencies = {
-      'nvim-telescope/telescope.nvim',
-      'ibhagwan/fzf-lua',
-    },
-    config = function()
-      require('neoclip').setup {
-        keys = {
-          telescope = {
-            i = {
-              paste_behind = 'C-o',
-            },
-          },
-        },
-      }
-    end,
-  },
-  {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',

@@ -10,9 +10,6 @@ return {
     end,
   },
 
-  -- Running Jest unit tests from NeoVim
-  { 'mattkubej/jest.nvim', version = '*' },
-
   -- Remember previously opened buffers
   {
     'rmagatti/auto-session',
