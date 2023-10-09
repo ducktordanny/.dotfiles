@@ -14,7 +14,8 @@ vim.keymap.set('n', '<C-k>', '<cmd>TmuxNavigateUp<cr>')
 
 -- Greates remap ever (according to ThePrimeagen)
 vim.keymap.set('x', '<leader>p', '"_dP')
-vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace word that we are on' })
+vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = 'Replace word that we are on' })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -43,8 +44,6 @@ vim.keymap.set('n', '<leader>nr', '<cmd>NvimTreeRefresh<cr>', { desc = '[N]vimTr
 vim.keymap.set('n', '<leader>W', '<cmd>bp|bd #<cr>', { desc = 'Close current buffer window and open previous' })
 vim.keymap.set('n', '<leader>WW', '<cmd>%bd|e#|bd#<cr>', { desc = 'Close all buffers but this' })
 vim.keymap.set('n', '<leader>WS', '<cmd>buffers<cr>:bd ', { desc = 'Select buffers to close' })
-vim.keymap.set('n', 'N', '<cmd>bnext<cr>', { desc = 'buffer [n]ext' })
-vim.keymap.set('n', 'P', '<cmd>bprevious<cr>', { desc = 'buffer [p]revious' })
 
 -- git, gitsigns and vgit remaps
 vim.keymap.set('n', '<leader>gl', '<cmd>Flogsplit<cr>', { desc = '[G]it [L]og' })
