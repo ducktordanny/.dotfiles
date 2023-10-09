@@ -29,16 +29,9 @@ And then put this there:
 gui:
   theme:
     selectedLineBgColor:
-      - black
-```
-
-or:
-
-```yml
-gui:
-  theme:
-    selectedLineBgColor:
-      - '#191970'
+      - reverse
+    selectedRangeBgColor:
+      - reverse
 ```
 
 This will set the highlight color to black, which is imo much better than the original one.
