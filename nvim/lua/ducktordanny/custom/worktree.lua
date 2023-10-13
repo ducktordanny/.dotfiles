@@ -63,14 +63,15 @@ local handle_worktree_switch = function(tree_path)
   local project_path = vim.fn.getcwd()
 
   vim.cmd ':wa'
+  vim.cmd ':LspStop'
   auto_session.SaveSession(project_path)
   delete_opened_buffers()
   if project_path == tree_path then
     return
   end
-  vim.cmd('cd ' .. tree_path)
   nvim_tree_api.tree.change_root(tree_path)
   auto_session.RestoreSession(tree_path)
+  vim.cmd ':LspStart'
 end
 
 local open_worktree_window = function(opts)
