@@ -30,7 +30,7 @@ return {
       require('nvim-tree').setup {
         filters = { custom = { '^.git$', '^.DS_Store$' } },
         git = { ignore = false },
-        view = { width = 50 },
+        view = { width = 50, relativenumber = true, number = true },
         renderer = {
           indent_markers = {
             enable = true,
