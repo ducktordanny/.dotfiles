@@ -42,6 +42,6 @@ vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' }
 vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch [O]ldfiles' })
 
 vim.keymap.set('n', '<leader>h', harpoon_ui.toggle_quick_menu)
-vim.keymap.set('n', '<C-y>', harpoon_mark.add_file)
+vim.keymap.set('n', '<leader>hh', harpoon_mark.add_file)
 vim.keymap.set('n', '<C-n>', harpoon_ui.nav_next)
 vim.keymap.set('n', '<C-p>', harpoon_ui.nav_prev)
