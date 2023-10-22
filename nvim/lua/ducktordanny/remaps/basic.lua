@@ -67,9 +67,6 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
--- Glow
-vim.keymap.set('n', '<leader>md', '<cmd>Glow<cr>', { desc = 'Glow [M]ark[d]own' })
-
 -- Better visual mode indenting
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
