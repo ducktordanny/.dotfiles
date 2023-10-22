@@ -8,19 +8,6 @@ local themes = require 'telescope.themes'
 local auto_session = require 'auto-session'
 local nvim_tree_api = require 'nvim-tree.api'
 
-local delete_opened_buffers = function()
-  local all_buffers = vim.api.nvim_list_bufs()
-  local project_path = vim.fn.getcwd()
-
-  for _, bufnr in ipairs(all_buffers) do
-    local buf_name = vim.fn.bufname(bufnr)
-
-    if vim.fn.findfile(buf_name, project_path) then
-      vim.api.nvim_buf_delete(bufnr, { force = false })
-    end
-  end
-end
-
 local get_worktree_paths = function()
   local project_path = vim.fn.getcwd()
   local worktrees = vim.fn.systemlist 'git worktree list'
@@ -65,10 +52,7 @@ local handle_worktree_switch = function(tree_path)
   vim.cmd ':wa'
   vim.cmd ':LspStop'
   auto_session.SaveSession(project_path)
-  delete_opened_buffers()
-  if project_path == tree_path then
-    return
-  end
+  vim.cmd ':%bd'
   nvim_tree_api.tree.change_root(tree_path)
   auto_session.RestoreSession(tree_path)
   vim.cmd ':LspStart'
