@@ -73,3 +73,6 @@ vim.keymap.set('v', '>', '>gv')
 
 -- Remove search highlight
 vim.keymap.set('n', '<leader>sn', '<cmd>noh<cr>', { desc = 'Remove search highlight' })
+
+-- Black hole delete
+vim.keymap.set('n', '<leader>d', '"_d', { desc = 'Black hole delete (no save to regs)' })
