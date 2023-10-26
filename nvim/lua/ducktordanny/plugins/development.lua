@@ -31,17 +31,6 @@ return {
     end,
   },
 
-  -- Visual git plugin
-  {
-    'tanvirtin/vgit.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = function()
-      require('vgit').setup {}
-    end,
-  },
-
   -- LazyGit
   {
     'kdheepak/lazygit.nvim',

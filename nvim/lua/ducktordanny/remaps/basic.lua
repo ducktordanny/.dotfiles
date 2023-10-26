@@ -14,7 +14,8 @@ vim.keymap.set('n', '<C-k>', '<cmd>TmuxNavigateUp<cr>')
 
 -- Greates remap ever (according to ThePrimeagen)
 vim.keymap.set('x', '<leader>p', '"_dP')
-vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace word that we are on' })
+vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = 'Replace word that we are on' })
 
 -- Better scrolling
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
@@ -48,7 +49,7 @@ vim.keymap.set('n', '<leader>W', '<cmd>bp|bd #<cr>', { desc = 'Close current buf
 vim.keymap.set('n', '<leader>WW', '<cmd>%bd|e#|bd#<cr>', { desc = 'Close all buffers but this' })
 vim.keymap.set('n', '<leader>WS', '<cmd>buffers<cr>:bd ', { desc = 'Select buffers to close' })
 
--- git, gitsigns and vgit remaps
+-- git, gitsigns remaps
 vim.keymap.set('n', '<leader>gl', '<cmd>Flogsplit<cr>', { desc = '[G]it [L]og' })
 vim.keymap.set('n', '<leader>gr', '<cmd>Gitsigns refresh<cr>', { desc = '[G]itsigns [R]efresh' })
 vim.keymap.set('n', '<leader>ga', '<cmd>Git add --all<cr>', { desc = '[G]it add [a]ll' })
@@ -57,7 +58,7 @@ vim.keymap.set('n', '<leader>gs', '<cmd>Git status<cr>', { desc = '[G]it [S]tatu
 vim.keymap.set('n', '<leader>gp', '<cmd>Git push', { desc = '[G]it [P]ush' })
 vim.keymap.set('n', '<leader>gf', '<cmd>Git fetch', { desc = '[G]it [F]etch' })
 vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<cr>', { desc = '[G]it [B]lame' })
-vim.keymap.set('n', '<leader>gd', '<cmd>VGit project_diff_preview<cr>', { desc = '[G]it [D]iff preview' })
+vim.keymap.set('n', '<leader>gd', '<cmd>Gdiffsplit<cr>', { desc = '[G]it [D]iff preview' })
 vim.keymap.set('n', '<leader>l', '<cmd>LazyGit<cr>', { desc = '[L]azyGit' })
 vim.keymap.set('n', '<leader>gu', '<cmd>Gitsigns reset_hunk<cr>', { desc = '[G]it [U]ndo hunk' })
 
