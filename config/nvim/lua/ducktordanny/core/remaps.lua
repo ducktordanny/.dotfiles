@@ -12,7 +12,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Greates remap ever (according to ThePrimeagen)
 vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
-  desc = "Replace word that we are on"
+  desc = "Replace word that we are on",
 })
 
 -- Better scrolling
