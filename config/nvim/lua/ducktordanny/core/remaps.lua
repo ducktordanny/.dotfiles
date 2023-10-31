@@ -45,3 +45,10 @@ vim.keymap.set("n", "<leader>sn", "<cmd>noh<cr>", { desc = "Remove search highli
 
 -- Black hole delete
 vim.keymap.set("n", "<leader>d", '"_d', { desc = "Black hole delete (no save to regs)" })
+
+-- After nvim start open explorer
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.cmd ":E"
+  end,
+})
