@@ -7,6 +7,7 @@ return {
       local telescope = require "telescope"
       local actions = require "telescope.actions"
       local builtin = require "telescope.builtin"
+      local utils = require "telescope.utils"
 
       local telescope_mappings = {
         ["<C-u>"] = false,
@@ -27,16 +28,20 @@ return {
         },
       }
 
+      local findInCwd = function()
+        builtin.find_files { cwd = utils.buffer_dir() }
+      end
+
       -- See `:help telescope.builtin`
       vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
-      vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find,
-        { desc = "[/] Fuzzily search in current buffer" })
+      vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "[/] Fuzzily search in current buffer" })
       vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
       vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
       vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
       vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
       vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
       vim.keymap.set("n", "<leader>so", builtin.oldfiles, { desc = "[S]earch [O]ldfiles" })
+      vim.keymap.set("n", "<leader>ss", findInCwd, { desc = "[S]earch current buffer's directory" })
     end,
   },
   {
