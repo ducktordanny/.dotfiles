@@ -7,5 +7,5 @@ return {
     vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
     vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
     vim.keymap.set("n", "<C-/>", "<cmd>TmuxNavigatePrevious<cr>")
-  end
+  end,
 }
