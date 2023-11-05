@@ -9,6 +9,8 @@ return {
       vim.keymap.set("n", "<leader>gf", "<cmd>Git fetch", { desc = "[G]it [F]etch" })
       vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<cr>", { desc = "[G]it [B]lame" })
       vim.keymap.set("n", "<leader>gd", "<cmd>Gdiffsplit<cr>", { desc = "[G]it [D]iff preview" })
+      -- NOTE: Use fugitive more, and may be remove lazygit later??
+      vim.keymap.set("n", "<leader>g", "<cmd>Git<cr>", { desc = "[G]it" })
     end,
   },
   {
