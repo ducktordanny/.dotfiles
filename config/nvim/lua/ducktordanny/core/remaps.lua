@@ -14,6 +14,7 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
   desc = "Replace word that we are on",
 })
+vim.keymap.set("n", "<leader>rr", [[:%s/\(<C-r>*\)/\1]], { desc = "Extend yank parts" })
 
 -- Better scrolling
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
