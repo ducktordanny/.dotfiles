@@ -31,7 +31,8 @@ vim.o.colorcolumn = "120"
 -- Keep signcolumn on by default
 vim.wo.signcolumn = "yes"
 
-vim.o.incsearch = false
+vim.o.incsearch = true
+vim.o.hlsearch = false
 
 -- Decrease update time
 vim.o.updatetime = 50
