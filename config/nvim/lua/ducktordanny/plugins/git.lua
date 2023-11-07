@@ -9,7 +9,6 @@ return {
       vim.keymap.set("n", "<leader>gf", "<cmd>Git fetch", { desc = "[G]it [F]etch" })
       vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<cr>", { desc = "[G]it [B]lame" })
       vim.keymap.set("n", "<leader>gd", "<cmd>Gdiffsplit<cr>", { desc = "[G]it [D]iff preview" })
-      -- NOTE: Use fugitive more, and may be remove lazygit later??
       vim.keymap.set("n", "<leader>g", "<cmd>Git<cr>", { desc = "[G]it" })
     end,
   },
@@ -34,17 +33,6 @@ return {
       require("gitsigns").setup() -- NOTE: This is needed, otherwise it won't load for some reason
       vim.keymap.set("n", "<leader>gu", "<cmd>Gitsigns reset_hunk<cr>", { desc = "[G]it [U]ndo hunk" })
       vim.keymap.set("n", "<leader>gr", "<cmd>Gitsigns refresh<cr>", { desc = "[G]itsigns [R]efresh" })
-    end,
-  },
-  {
-    "kdheepak/lazygit.nvim", -- requires to install lazygit
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("telescope").load_extension "lazygit"
-      vim.keymap.set("n", "<leader>l", "<cmd>LazyGit<cr>", { desc = "[L]azyGit" })
     end,
   },
 }
