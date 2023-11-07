@@ -51,13 +51,6 @@ vim.keymap.set("n", "<leader>e", "<cmd>Explore<cr>", { desc = "Open [e]xplorer w
 vim.keymap.set("n", "<leader>es", "<cmd>Sexplore<cr>", { desc = "Open [e]xplorer with [S]explore" })
 vim.keymap.set("n", "<leader>ev", "<cmd>Vexplore<cr>", { desc = "Open [e]xplorer with [V]explore" })
 
--- After nvim start open explorer
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    vim.cmd ":E"
-  end,
-})
-
 vim.api.nvim_create_autocmd("filetype", {
   pattern = "netrw",
   desc = "Better mappings for netrw",
