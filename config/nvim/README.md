@@ -11,27 +11,3 @@ The other settings and remaps can be seen in the `lua/ducktordanny/settings.lua`
 ## Notes
 
 - For telescope to work properly, you'll need to install ripgrep ([https://github.com/BurntSushi/ripgrep#installation](https://github.com/BurntSushi/ripgrep#installation)).
-- For lazygit.nvim you may need to install lazygit separately (though I'm not sure about that... 🤷)
-
-## LazyGit
-
-As of right now, when I open LazyGit from NeoVim the selected lines had a pretty bad contrast. However, this can be resolved easily by editing the default config:
-
-Default path for the config file:
-
-- Linux: ~/.config/lazygit/config.yml
-- MacOS: ~/Library/Application Support/lazygit/config.yml
-- Windows: %APPDATA%\lazygit\config.yml
-
-And then put this there:
-
-```yml
-gui:
-  theme:
-    selectedLineBgColor:
-      - reverse
-    selectedRangeBgColor:
-      - reverse
-```
-
-This will set the highlight color to black, which is imo much better than the original one.

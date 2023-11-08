@@ -12,7 +12,7 @@ echo "Installing brew..."
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 echo "Installing basic packages..."
-brew install node git nvm neovim tmux koekeishiya/formulae/yabai koekeishiya/formulae/skhd ripgrep lazygit docker
+brew install node git nvm neovim tmux koekeishiya/formulae/yabai koekeishiya/formulae/skhd ripgrep docker
 npm install -g yarn
 
 echo "Installing terminal related things..."
