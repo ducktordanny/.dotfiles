@@ -63,3 +63,6 @@ vim.api.nvim_create_autocmd("filetype", {
     bind("<c-h>", "<cmd>TmuxNavigateLeft<cr>")
   end,
 })
+
+vim.keymap.set("n", "<leader>j", "<cmd>cnext<cr>", { desc = "Jump to next quick fix list item" })
+vim.keymap.set("n", "<leader>k", "<cmd>cprev<cr>", { desc = "Jump to previous quick fix list item" })
