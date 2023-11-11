@@ -15,6 +15,13 @@ echo "Installing basic packages..."
 brew install node git nvm neovim tmux koekeishiya/formulae/yabai koekeishiya/formulae/skhd ripgrep docker
 npm install -g yarn
 
+echo "Installing nerd fonts..."
+mkdir ~/.fonts
+curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ~/.fonts/MesloLGS%20NF%20Regular.ttf
+curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf --output ~/.fonts/MesloLGS%20NF%20Bold.ttf
+curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf --output ~/.fonts/MesloLGS%20NF%20Italic.ttf
+curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf --output ~/.fonts/MesloLGS%20NF%20Bold%20Italic.ttf
+
 echo "Installing terminal related things..."
 brew install --cask iterm2
 brew install powerlevel10k
