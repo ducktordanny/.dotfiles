@@ -44,21 +44,21 @@ return {
       vim.keymap.set("n", "<leader>ss", findInCwd, { desc = "[S]earch current buffer's directory" })
 
       -- Previewless search
-      vim.keymap.set("n", "<leader>sfh", function()
+      vim.keymap.set("n", "<leader>hsf", function()
         builtin.find_files { previewer = false }
-      end, { desc = "[S]earch [F]iles with [H]idden preview" })
+      end, { desc = "[H]idden preview for [S]earch [F]iles" })
 
-      vim.keymap.set("n", "<leader>swh", function()
+      vim.keymap.set("n", "<leader>hsw", function()
         builtin.grep_string { preview = false }
-      end, { desc = "[S]earch current [W]ord with [H]idden preview" })
+      end, { desc = "[H]idden preview for [S]earch current [W]ord" })
 
-      vim.keymap.set("n", "<leader>sdh", function()
+      vim.keymap.set("n", "<leader>hsd", function()
         builtin.diagnostics { preview = false }
-      end, { desc = "[S]earch [D]iagnostics with [H]idden preview" })
+      end, { desc = "[H]idden preview for [S]earch [D]iagnostics" })
 
-      vim.keymap.set("n", "<leader>soh", function()
+      vim.keymap.set("n", "<leader>hso", function()
         builtin.oldfiles { preview = false }
-      end, { desc = "[S]earch [O]ldfiles with [H]idden preview" })
+      end, { desc = "[H]idden preview for [S]earch [O]ldfiles" })
     end,
   },
   {
