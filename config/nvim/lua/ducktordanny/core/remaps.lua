@@ -66,3 +66,9 @@ vim.api.nvim_create_autocmd("filetype", {
 
 vim.keymap.set("n", "<leader>j", "<cmd>cnext<cr>", { desc = "Jump to next quick fix list item" })
 vim.keymap.set("n", "<leader>k", "<cmd>cprev<cr>", { desc = "Jump to previous quick fix list item" })
+
+vim.keymap.set("n", "<M-j>", "5<C-w>-", { desc = "Decrease height size by 5" })
+vim.keymap.set("n", "<M-k>", "5<C-w>+", { desc = "Increase height size by 5" })
+vim.keymap.set("n", "<M-h>", "5<C-w><", { desc = "Decrease height size by 5" })
+vim.keymap.set("n", "<M-l>", "5<C-w>>", { desc = "Increase height size by 5" })
+vim.keymap.set("n", "<M-u>", "<C-w>=", { desc = "Equalize width and height of all splits" })
