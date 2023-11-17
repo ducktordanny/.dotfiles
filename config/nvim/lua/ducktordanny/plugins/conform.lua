@@ -21,6 +21,7 @@ local formatters_by_ft = {
   typescriptreact = { "prettier" },
   svelte = { "prettier" },
   css = { "prettier" },
+  scss = { "prettier" },
   html = { "prettier" },
   json = { "prettier" },
   yaml = { "prettier" },
@@ -43,7 +44,6 @@ return {
     config = function()
       local prettier = require "prettier"
       local conform = require "conform"
-
 
       prettier.setup {
         bin = "prettier", -- or `"prettierd"` (v0.23.3+)
