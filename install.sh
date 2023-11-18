@@ -42,6 +42,9 @@ echo "Start services for yabai and skhd"
 yabai --start-service
 skhd --start-service
 
+echo "Adding some magic to zshrc"
+echo "fortune | cowsay -f tux" >> ~/.zshrc
+
 echo "Done. ✅"
 
 echo "Next steps:"
