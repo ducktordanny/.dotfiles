@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# !!! WIP !!!
-
-# Install most of the apps and packages that I use based on the TOOLS.md file
+# Install most of the apps and packages that I use based on the TOOLS.md file.
 
 # install homebrew
 echo "Installing brew..."

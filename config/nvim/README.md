@@ -4,9 +4,9 @@
 
 ## Details
 
-I use the LazyNvim package manager to install and use plugins. The used plugins can be found under the `lua/ducktordanny/plugins` folder. In its init file there are some basic plugins and configurations, and the other ones are separated into two other files based on their purposes.
+I use the LazyNvim package manager to install and use plugins. The used plugins can be found under the `lua/ducktordanny/plugins` folder. In there most of the plugins have their own files, or in a few cases (like git) a specific area has a file with its plugins.
 
-The other settings and remaps can be seen in the `lua/ducktordanny/settings.lua` file and `lua/ducktordanny/remaps` folder.
+The other settings and remaps can be seen in the `lua/ducktordanny/core` folder.
 
 ## Notes
 
