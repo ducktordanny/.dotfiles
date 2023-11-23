@@ -42,6 +42,7 @@ return {
       vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
       vim.keymap.set("n", "<leader>so", builtin.oldfiles, { desc = "[S]earch [O]ldfiles" })
       vim.keymap.set("n", "<leader>ss", findInCwd, { desc = "[S]earch current buffer's directory" })
+      vim.keymap.set("n", "<leader>sj", "<cmd>Telescope git_branches", { "Search git branches" })
 
       -- Previewless search
       vim.keymap.set("n", "<leader>hsf", function()
