@@ -27,6 +27,7 @@ Go to `System Settings/Accessibility/Dispay` and enable "Reduce motion". I just 
 ## No Dock, just nooo
 
 Go to `System Settings/Desktop & Dock` and:
+
 - set "Size" to ~1/4
 - enable "Automatically hide and show the Dock"
 - disable "Animate opening applications"
@@ -49,13 +50,18 @@ Go to `Finder/Settings/Tags` and remove everything.
 Go to `Finder/Settings/Sidebar` and add the `$HOME` and "Pictures" folders to favorites
 Open `Finder` and create a folder "Developer" inside the `$HOME` folder, then drag it to "Favorites" on the side
 
-## STATS
+## Brew installed apps
+
+<!-- TODO: Should finish this part as well, should add Alfred, etc. -->
+
+### STATS
 
 Open `iStat Menus` app enable "Combined" and there set it to: "CPU & GPU", "Memory", "Network". With "Register" you can add your license.
 
 ## App Store
 
 Open `App Store` and install the following apps (you need to login to iCloud first):
+
 - Yoink
 - Final Cut Pro
 - Hidden Bar
