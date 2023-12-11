@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  selected=$(find ~/.sb/audios -mindepth 1 -maxdepth 1 -type f -exec basename {} \; | sed 's/\.[^.]*$//' | fzf)
+fi
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+selected_audio=$(basename "$selected")
+echo "🚨 Playing sound $selected_audio 🚨"
+sb -a $selected_audio
