@@ -5,14 +5,14 @@ return {
     "nvim-lua/plenary.nvim",
   },
   config = function()
-    local harpoon = require("harpoon")
-    local harpoon_ui = require("harpoon.ui")
-    local harpoon_mark = require("harpoon.mark")
+    local harpoon = require "harpoon"
+    local harpoon_ui = require "harpoon.ui"
+    local harpoon_mark = require "harpoon.mark"
 
     harpoon.setup {
       menu = {
         height = 20,
-        width = vim.api.nvim_win_get_width(0) - 20,
+        width = vim.api.nvim_win_get_width(0) - 40,
       },
     }
     vim.keymap.set("n", "<leader>h", harpoon_ui.toggle_quick_menu)

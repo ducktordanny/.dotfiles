@@ -5,7 +5,7 @@ return {
   -- See `:help lualine.txt`
   opts = {
     options = {
-      theme = "onedark",
+      theme = "rose-pine",
       component_separators = { left = "", right = "|" },
       section_separators = "",
     },
