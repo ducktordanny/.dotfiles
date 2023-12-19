@@ -19,6 +19,7 @@ vim.o.clipboard = "unnamedplus"
 vim.o.breakindent = true
 
 -- Save undo history
+vim.o.undodir = os.getenv "HOME" .. "/.vim/undodir/"
 vim.o.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
