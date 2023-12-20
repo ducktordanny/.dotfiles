@@ -74,4 +74,4 @@ vim.keymap.set("n", "<M-l>", "5<C-w>>", { desc = "Increase height size by 5" })
 vim.keymap.set("n", "<M-u>", "<C-w>=", { desc = "Equalize width and height of all splits" })
 
 -- Fun
-vim.keymap.set("n", "<leader>ll", "<cmd>!fortune | cowsay<cr>", { desc = "Cowsay a fortune" })
+vim.keymap.set("n", "<leader>ll", "<cmd>!fortune | cowsay -f tux<cr>", { desc = "Cowsay a fortune" })
