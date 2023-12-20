@@ -25,6 +25,7 @@ return {
             n = telescope_mappings,
           },
           file_ignore_patterns = {},
+          path_display = { shorten = { len = 2, exclude = { 1, 2, -1 } } },
         },
       }
 
@@ -34,8 +35,7 @@ return {
 
       -- See `:help telescope.builtin`
       vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
-      vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find,
-        { desc = "[/] Fuzzily search in current buffer" })
+      vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "[/] Fuzzily search in current buffer" })
       vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
       vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
       vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
