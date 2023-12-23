@@ -13,6 +13,11 @@ echo "Installing basic packages..."
 brew install node git nvm neovim koekeishiya/formulae/yabai koekeishiya/formulae/skhd ripgrep docker fzf fortune cowsay go
 npm install -g yarn
 
+echo "Installing speedtest cli"
+brew tap teamookla/speedtest
+brew update
+brew install speedtest --force
+
 echo "Installing nerd fonts..."
 mkdir ~/.fonts
 curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ~/.fonts/MesloLGS%20NF%20Regular.ttf
