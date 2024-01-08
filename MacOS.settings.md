@@ -22,7 +22,7 @@ Go to `System Settings/Keyboard/Text Input/Input Source (US)/Edit...` and disabl
 
 ## Turn off those annoying ANIMATIONS..
 
-Go to `System Settings/Accessibility/Dispay` and enable "Reduce motion". I just don't need those fancy animations... This makes Desktop switches much much faster.
+Go to `System Settings/Accessibility/Display` and enable "Reduce motion". I just don't need those fancy animations... This makes Desktop switches much much faster.
 
 ## No Dock, just nooo
 
