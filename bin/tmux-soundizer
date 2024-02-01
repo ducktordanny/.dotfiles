@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Uses my own terminal based soundboard which is written in Go
+# https://github.com/ducktordanny/sb
+
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
