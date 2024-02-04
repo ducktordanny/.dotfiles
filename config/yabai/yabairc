@@ -15,6 +15,9 @@ yabai -m config window_gap 4
 # mouse settings
 yabai -m mouse_drop_action swap
 
+# sketchybar
+yabai -m config external_bar all:32:0
+
 # disable these apps
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
