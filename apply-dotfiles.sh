@@ -19,4 +19,5 @@ done
 tmux source ~/.config/tmux/tmux.conf
 yabai --restart-service
 skhd --restart-service
+sketchybar --reload
 cd ..
