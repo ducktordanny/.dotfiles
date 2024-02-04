@@ -104,7 +104,7 @@ sketchybar --add item clock right                              \
                       script="$PLUGIN_DIR/cpu.sh"
 
 sketchybar --add item media e                        \
-           --set media label.max_chars=28            \
+           --set media label.max_chars=32            \
                        icon.padding_left=4           \
                        scroll_texts=on               \
                        icon=􀑪                        \
