@@ -18,12 +18,17 @@ brew tap teamookla/speedtest
 brew update
 brew install speedtest --force
 
-echo "Installing nerd fonts..."
+echo "Installing fonts..."
 mkdir ~/.fonts
 curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ~/.fonts/MesloLGS%20NF%20Regular.ttf
 curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf --output ~/.fonts/MesloLGS%20NF%20Bold.ttf
 curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf --output ~/.fonts/MesloLGS%20NF%20Italic.ttf
 curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf --output ~/.fonts/MesloLGS%20NF%20Bold%20Italic.ttf
+
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+brew install font-sf-pro
+brew install --cask sf-symbols
 
 echo "Installing terminal related things..."
 brew install --cask iterm2
@@ -31,6 +36,11 @@ brew install powerlevel10k zsh-autosuggestions zsh-syntax-highlighting
 echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+
+echo "Install thingies for custom menu bar (SketchyBar)"
+brew tap FelixKratz/formulae
+brew install sketchybar
+brew install jq
 
 echo "Installing GUI applications..."
 brew install --casks istat-menus karabiner-elements alfred insomnia discord arc figma microsoft-teams gimp vlc obs coconutbattery google-chrome firefox
@@ -41,9 +51,10 @@ cd ~/.config/.dotfiles
 
 bash ~/.config/.dotfiles/config/tmux/install.sh
 
-echo "Start services for yabai and skhd"
+echo "Start services for yabai, skhd, and sketchybar"
 yabai --start-service
 skhd --start-service
+brew services start sketchybar
 
 echo "Adding some magic to zshrc"
 echo "fortune | cowsay -f tux" >> ~/.zshrc

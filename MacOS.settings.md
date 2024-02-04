@@ -1,4 +1,4 @@
-# Mac OS System Settings
+# Mac OS (Ventura) System Settings
 
 > Some of my System Settings that I'm using for Mac OS and they are pretty handy.
 
@@ -34,6 +34,10 @@ Go to `System Settings/Desktop & Dock` and:
 - disable "Show recent applications in Dock"
 - default web browser should be "Arc"
 - disable "Automatically rearrange Spaces based on most recent use" (it is just stupid..)
+
+## Hide default Menu Bar
+
+Go to `System Settings/Desktop & Dock` and at the Menu Bar section set "Automatically hide and show the menu bar" to "Always". Since we have sketchybar installed and configured, the default one should not be shown.
 
 ## HOT
 
