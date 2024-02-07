@@ -75,3 +75,6 @@ vim.keymap.set("n", "<M-u>", "<C-w>=", { desc = "Equalize width and height of al
 
 -- Fun
 vim.keymap.set("n", "<leader>ll", "<cmd>!fortune | cowsay -f tux<cr>", { desc = "Cowsay a fortune" })
+
+-- Terminal
+vim.keymap.set("t", "<C-n>", "<C-\\><C-N>", { desc = "Terminal mode to Normal mode" })
