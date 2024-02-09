@@ -69,8 +69,8 @@ vim.keymap.set("n", "<leader>k", "<cmd>cprev<cr>", { desc = "Jump to previous qu
 
 vim.keymap.set("n", "<M-j>", "5<C-w>-", { desc = "Decrease height size by 5" })
 vim.keymap.set("n", "<M-k>", "5<C-w>+", { desc = "Increase height size by 5" })
-vim.keymap.set("n", "<M-h>", "5<C-w><", { desc = "Decrease height size by 5" })
-vim.keymap.set("n", "<M-l>", "5<C-w>>", { desc = "Increase height size by 5" })
+vim.keymap.set("n", "<M-h>", "5<C-w><", { desc = "Decrease width size by 5" })
+vim.keymap.set("n", "<M-l>", "5<C-w>>", { desc = "Increase width size by 5" })
 vim.keymap.set("n", "<M-u>", "<C-w>=", { desc = "Equalize width and height of all splits" })
 
 -- Fun
