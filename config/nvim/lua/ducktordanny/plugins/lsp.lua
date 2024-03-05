@@ -74,7 +74,6 @@ return {
         eslint = {},
         html = {},
         jsonls = {},
-        tsserver = {},
         jdtls = {},
         omnisharp = {},
       }
