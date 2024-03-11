@@ -1,40 +1,56 @@
 return {
   "ThePrimeagen/harpoon",
+  branch = "harpoon2",
   dependencies = {
     "nvim-telescope/telescope.nvim",
     "nvim-lua/plenary.nvim",
   },
   config = function()
     local harpoon = require "harpoon"
-    local harpoon_ui = require "harpoon.ui"
-    local harpoon_mark = require "harpoon.mark"
 
-    harpoon.setup {
-      menu = {
-        height = 20,
-        width = vim.api.nvim_win_get_width(0) - 40,
-      },
-    }
-    vim.keymap.set("n", "<leader>h", harpoon_ui.toggle_quick_menu)
-    vim.keymap.set("n", "<leader>hh", harpoon_mark.add_file)
-    vim.keymap.set("n", "<C-n>", harpoon_ui.nav_next)
-    vim.keymap.set("n", "<C-p>", harpoon_ui.nav_prev)
+    harpoon:setup()
 
-    -- Navigate to Nth harpoon file
+    -- basic telescope configuration
+    local conf = require("telescope.config").values
+    local function toggle_telescope(harpoon_files)
+      local file_paths = {}
+      for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+      end
+
+      require("telescope.pickers")
+        .new(require("telescope.themes").get_dropdown {}, {
+          prompt_title = "Harpoon",
+          finder = require("telescope.finders").new_table {
+            results = file_paths,
+          },
+          previewer = conf.file_previewer {},
+          sorter = conf.generic_sorter {},
+        })
+        :find()
+    end
+
+    vim.keymap.set("n", "<leader>hh", function()
+      harpoon:list():append()
+    end)
+    vim.keymap.set("n", "<leader>h", function()
+      toggle_telescope(harpoon:list())
+    end, { desc = "Open harpoon window" })
+
     vim.keymap.set("n", "<leader>n", function()
-      harpoon_ui.nav_file(1)
-    end, { desc = "Navigate to harpoon file 1" })
+      harpoon:list():select(1)
+    end)
     vim.keymap.set("n", "<leader>m", function()
-      harpoon_ui.nav_file(2)
-    end, { desc = "Navigate to harpoon file 2" })
+      harpoon:list():select(2)
+    end)
     vim.keymap.set("n", "<leader>,", function()
-      harpoon_ui.nav_file(3)
-    end, { desc = "Navigate to harpoon file 3" })
+      harpoon:list():select(3)
+    end)
     vim.keymap.set("n", "<leader>.", function()
-      harpoon_ui.nav_file(4)
-    end, { desc = "Navigate to harpoon file 4" })
+      harpoon:list():select(4)
+    end)
     vim.keymap.set("n", "<leader>;", function()
-      harpoon_ui.nav_file(5)
-    end, { desc = "Navigate to harpoon file 5" })
+      harpoon:list():select(5)
+    end)
   end,
 }
