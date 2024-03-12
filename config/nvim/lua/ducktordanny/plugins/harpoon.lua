@@ -7,27 +7,59 @@ return {
   },
   config = function()
     local harpoon = require "harpoon"
+    local telescope_config = require "telescope.config"
+    local pickers = require "telescope.pickers"
+    local themes = require "telescope.themes"
+    local finders = require "telescope.finders"
+    local actions = require "telescope.actions"
+    local action_state = require "telescope.actions.state"
 
     harpoon:setup()
 
     -- basic telescope configuration
-    local conf = require("telescope.config").values
-    local function toggle_telescope(harpoon_files)
+    local conf = telescope_config.values
+    local function toggle_telescope(harpoon_files, selected_index)
+      selected_index = selected_index or 1
       local file_paths = {}
       for _, item in ipairs(harpoon_files.items) do
         table.insert(file_paths, item.value)
       end
 
-      require("telescope.pickers")
-        .new(require("telescope.themes").get_dropdown {}, {
-          prompt_title = "Harpoon",
-          finder = require("telescope.finders").new_table {
-            results = file_paths,
-          },
-          previewer = conf.file_previewer {},
-          sorter = conf.generic_sorter {},
-        })
-        :find()
+      local picker = pickers.new(themes.get_dropdown {}, {
+        prompt_title = "Harpoon",
+        finder = finders.new_table {
+          results = file_paths,
+        },
+        default_selection_index = selected_index,
+        previewer = conf.file_previewer {},
+        -- TODO: Custom sorter for highlighting?
+        attach_mappings = function(_, map)
+          map("i", "<C-d>", function()
+            local index = action_state.get_selected_entry().index
+            harpoon:list():removeAt(index)
+            toggle_telescope(harpoon:list())
+          end)
+          -- TODO: Should do the same for the other direction and find a better keymap
+          map("i", "<C-K>", function()
+            local index = action_state.get_selected_entry().index
+            local new_index = index - 1
+            if new_index < 1 then
+              new_index = harpoon:list():length()
+            end
+            local list = harpoon:list().items
+            local item_to_move = list[index]
+            table.remove(list, index)
+            table.insert(list, new_index, item_to_move)
+            harpoon:list():clear()
+            for _, item in ipairs(list) do
+              harpoon:list():append(item)
+            end
+            toggle_telescope(harpoon:list(), new_index)
+          end)
+          return true
+        end,
+      })
+      picker:find()
     end
 
     vim.keymap.set("n", "<leader>hh", function()
