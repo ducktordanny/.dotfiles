@@ -39,12 +39,28 @@ return {
             harpoon:list():removeAt(index)
             toggle_telescope(harpoon:list())
           end)
-          -- TODO: Should do the same for the other direction and find a better keymap
-          map("i", "<C-K>", function()
+          -- TODO: Refactor logic into separate function and find better keymap
+          map("i", "<C-k>", function()
             local index = action_state.get_selected_entry().index
             local new_index = index - 1
             if new_index < 1 then
               new_index = harpoon:list():length()
+            end
+            local list = harpoon:list().items
+            local item_to_move = list[index]
+            table.remove(list, index)
+            table.insert(list, new_index, item_to_move)
+            harpoon:list():clear()
+            for _, item in ipairs(list) do
+              harpoon:list():append(item)
+            end
+            toggle_telescope(harpoon:list(), new_index)
+          end)
+          map("i", "<C-j>", function()
+            local index = action_state.get_selected_entry().index
+            local new_index = index + 1
+            if new_index > harpoon:list():length() then
+              new_index = 1
             end
             local list = harpoon:list().items
             local item_to_move = list[index]
