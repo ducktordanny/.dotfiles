@@ -11,7 +11,6 @@ return {
     local pickers = require "telescope.pickers"
     local themes = require "telescope.themes"
     local finders = require "telescope.finders"
-    local actions = require "telescope.actions"
     local action_state = require "telescope.actions.state"
 
     harpoon:setup()
@@ -31,47 +30,55 @@ return {
           results = file_paths,
         },
         default_selection_index = selected_index,
+        sorter = conf.generic_sorter {},
         previewer = conf.file_previewer {},
-        -- TODO: Custom sorter for highlighting?
         attach_mappings = function(_, map)
-          map("i", "<C-d>", function()
-            local index = action_state.get_selected_entry().index
-            harpoon:list():removeAt(index)
-            toggle_telescope(harpoon:list())
-          end)
-          -- TODO: Refactor logic into separate function and find better keymap
-          map("i", "<C-k>", function()
+          local function replaceHarpoonItems(current_index, new_index)
+            local prompt_content = vim.api.nvim_get_current_line()
+            if prompt_content ~= "> " then
+              return
+            end
+            local list = harpoon:list().items
+            local item_to_move = list[current_index]
+            table.remove(list, current_index)
+            table.insert(list, new_index, item_to_move)
+            harpoon:list():clear()
+            for _, item in ipairs(list) do
+              harpoon:list():append(item)
+            end
+            toggle_telescope(harpoon:list(), new_index)
+          end
+
+          map("i", "<C-u>", function()
+            if action_state.get_selected_entry() == nil then
+              return
+            end
             local index = action_state.get_selected_entry().index
             local new_index = index - 1
             if new_index < 1 then
               new_index = harpoon:list():length()
             end
-            local list = harpoon:list().items
-            local item_to_move = list[index]
-            table.remove(list, index)
-            table.insert(list, new_index, item_to_move)
-            harpoon:list():clear()
-            for _, item in ipairs(list) do
-              harpoon:list():append(item)
-            end
-            toggle_telescope(harpoon:list(), new_index)
+            replaceHarpoonItems(index, new_index)
           end)
-          map("i", "<C-j>", function()
+
+          map("i", "<C-d>", function()
+            if action_state.get_selected_entry() == nil then
+              return
+            end
             local index = action_state.get_selected_entry().index
             local new_index = index + 1
             if new_index > harpoon:list():length() then
               new_index = 1
             end
-            local list = harpoon:list().items
-            local item_to_move = list[index]
-            table.remove(list, index)
-            table.insert(list, new_index, item_to_move)
-            harpoon:list():clear()
-            for _, item in ipairs(list) do
-              harpoon:list():append(item)
-            end
-            toggle_telescope(harpoon:list(), new_index)
+            replaceHarpoonItems(index, new_index)
           end)
+
+          map("i", "<C-r>", function()
+            local index = action_state.get_selected_entry().index
+            harpoon:list():removeAt(index)
+            toggle_telescope(harpoon:list())
+          end)
+
           return true
         end,
       })
