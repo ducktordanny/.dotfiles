@@ -64,3 +64,7 @@ hyper - 0 : yabai -m window --grid 1:1:0:0:1:1
 # Yabai start/stop
 hyper - s : yabai --start-service
 hyper - q : yabai --stop-service
+
+# Hide and show sketchybar
+ctrl + cmd - m : yabai -m config external_bar all:0:0; sketchybar --bar height=0
+ctrl + cmd - n : yabai -m config external_bar all:36:0; sketchybar --bar height=36
