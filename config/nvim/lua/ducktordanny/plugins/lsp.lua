@@ -4,11 +4,20 @@ return {
     dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
   },
   {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).j
+    build = "make install_jsregexp",
+  },
+  {
     "ducktordanny/nvim-lspconfig",
     branch = "feat/nx-support-for-angularls",
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "hrsh7th/nvim-cmp",
+      "L3MON4D3/LuaSnip",
 
       -- Useful status updates for LSP
       { "j-hui/fidget.nvim", opts = {}, tag = "legacy" },
@@ -109,7 +118,7 @@ return {
 
       local cmp = require "cmp"
       local luasnip = require "luasnip"
-      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = "./snippets" })
       luasnip.config.setup {}
 
       cmp.setup {
