@@ -2,38 +2,33 @@
   "Console Log": {
     "prefix": "cl",
     "description": "Console Log",
-    "body": [
-      "console.log(${1:value});"
-    ]
+    "body": ["console.log(${1:value});"]
   },
   "Console Warn": {
-    "prefix": "cl",
+    "prefix": "cw",
     "description": "Console Warn",
-    "body": [
-      "console.warn(${1:value});"
-    ]
+    "body": ["console.warn(${1:value});"]
   },
   "Console Error": {
     "prefix": "ce",
     "description": "Console Error",
-    "body": [
-      "console.error(${1:value});"
-    ]
+    "body": ["console.error(${1:value});"]
   },
   "Angular Component": {
     "prefix": "a-component",
     "description": "Angular component",
     "body": [
-      "import {Component} from '@angular/core';",
+      "import {ChangeDetectionStrategy, Component} from '@angular/core';",
       "",
       "@Component({",
       "\tselector: '${1:selector-name}',",
       "\ttemplateUrl: '${2:name}.template.html',",
+      "\tstyleUrls: '${2:name}.style.scss',",
       "\tstandalone: true,",
+      "\timports: [],",
+      "\tchangeDetection: ChangeDetectionStrategy.OnPush,",
       "})",
-      "export class ${3:Name}Component {",
-      "\tconstructor() {}",
-      "}"
+      "export class ${3:Name}Component {}"
     ]
   },
   "Angular Component with Inline Template": {
@@ -62,6 +57,7 @@
       "@Pipe({",
       "\tname: '${1:selector-name}'",
       "\tstandalone: true,",
+      "\timports: [],",
       "})",
       "export class ${2:Name}Pipe implements PipeTransform {",
       "\ttransform(value: any, ...args: any[]): any {",
@@ -221,7 +217,11 @@
   "Subscribe": {
     "prefix": "a-subscribe",
     "description": "Angular observable subscribe",
-    "body": ["this.${1:service}.${2:function}", "\t.subscribe(${3:arg} => this.${4:property} = ${3:arg});", "$0"]
+    "body": [
+      "this.${1:service}.${2:function}",
+      "\t.subscribe(${3:arg} => this.${4:property} = ${3:arg});",
+      "$0"
+    ]
   },
   "Angular Root Component": {
     "prefix": "a-component-root",
@@ -399,7 +399,7 @@
     ]
   },
   "Angular Network-Aware Preload Strategy": {
-  "prefix": "a-preload-network-strategy",
+    "prefix": "a-preload-network-strategy",
     "description": "Angular network aware preload strategy",
     "body": [
       "import {Injectable} from '@angular/core';",
@@ -512,12 +512,16 @@
   "NgRx Create Action": {
     "prefix": "a-ngrx-create-action",
     "description": "Creates an NgRx Action",
-    "body": ["export const ${1:action} = createAction('[${2:Source}] ${3:Event}');"]
+    "body": [
+      "export const ${1:action} = createAction('[${2:Source}] ${3:Event}');"
+    ]
   },
   "NgRx Create Action w/ Props": {
     "prefix": "a-ngrx-create-action-props",
     "description": "Creates an NgRx Action with Props",
-    "body": ["export const ${1:action} = createAction('[${2:Source}] ${3:Event}', props<{${4:key}: ${5:type}}>());"]
+    "body": [
+      "export const ${1:action} = createAction('[${2:Source}] ${3:Event}', props<{${4:key}: ${5:type}}>());"
+    ]
   },
   "NgRx Create Reducer": {
     "prefix": "a-ngrx-create-reducer",
@@ -623,6 +627,10 @@
   "TrackBy Function": {
     "prefix": "a-trackby",
     "description": "TrackBy Function",
-    "body": ["${1:trackBy}(index: number, ${2:name}: ${3:model}): ${4:number} {", "  return ${2:name}${5:.id};$0", "}"]
+    "body": [
+      "${1:trackBy}(index: number, ${2:name}: ${3:model}): ${4:number} {",
+      "  return ${2:name}${5:.id};$0",
+      "}"
+    ]
   }
 }
