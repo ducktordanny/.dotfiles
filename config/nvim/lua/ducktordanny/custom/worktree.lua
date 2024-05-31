@@ -12,6 +12,7 @@ M._get_worktree_paths = function()
   local worktrees = vim.fn.systemlist "git worktree list"
 
   local tree_paths = {}
+  local branch_names = {}
   local bare_path = ""
 
   for _, worktree in ipairs(worktrees) do
@@ -21,9 +22,11 @@ M._get_worktree_paths = function()
     end
     if info[1] ~= project_path and info[2] ~= "(bare)" then
       table.insert(tree_paths, info[1])
+      table.insert(branch_names, info[3])
     elseif info[2] == "(bare)" then
       bare_path = info[1]
     end
+    P(info)
   end
 
   local current_tree = "-"
@@ -31,15 +34,20 @@ M._get_worktree_paths = function()
     current_tree = project_path:sub(#bare_path + 2)
   end
 
-  return { tree_paths = tree_paths, bare_path = bare_path, current_tree = current_tree }
+  return {
+    tree_paths = tree_paths,
+    bare_path = bare_path,
+    current_tree = current_tree,
+    branch_names = branch_names
+  }
 end
 
-M._get_tree_names = function(tree_paths, bare_path)
+M._get_formated_tree_list = function(tree_paths, bare_path, branch_names)
   local tree_names = {}
 
-  for _, path in ipairs(tree_paths) do
+  for index, path in ipairs(tree_paths) do
     local name = path:sub(#bare_path + 2)
-    table.insert(tree_names, name)
+    table.insert(tree_names, name .. " " .. branch_names[index])
   end
 
   return tree_names
@@ -58,25 +66,29 @@ end
 M.select_worktree = function(opts)
   opts = opts or {}
   local trees = M._get_worktree_paths()
-  local tree_names = M._get_tree_names(trees.tree_paths, trees.bare_path)
+  if #trees.tree_paths == 0 then
+    print("You have no worktrees!")
+    return
+  end
+  local tree_names = M._get_formated_tree_list(trees.tree_paths, trees.bare_path, trees.branch_names)
 
   pickers
-    .new(opts, {
-      prompt_title = "Worktrees (" .. trees.current_tree .. ")",
-      finder = finders.new_table {
-        results = tree_names,
-      },
-      sorter = conf.generic_sorter(opts),
-      attach_mappings = function(prompt_bufnr, _)
-        actions.select_default:replace(function()
-          actions.close(prompt_bufnr)
-          local selection = action_state.get_selected_entry()
-          M._handle_worktree_switch(trees.tree_paths[selection.index])
-        end)
-        return true
-      end,
-    })
-    :find()
+      .new(opts, {
+        prompt_title = "Worktrees (" .. trees.current_tree .. ")",
+        finder = finders.new_table {
+          results = tree_names,
+        },
+        sorter = conf.generic_sorter(opts),
+        attach_mappings = function(prompt_bufnr, _)
+          actions.select_default:replace(function()
+            actions.close(prompt_bufnr)
+            local selection = action_state.get_selected_entry()
+            M._handle_worktree_switch(trees.tree_paths[selection.index])
+          end)
+          return true
+        end,
+      })
+      :find()
 end
 
 M.select_worktree_dropdown = function()
