@@ -9,8 +9,6 @@ return {
       local builtin = require "telescope.builtin"
       local utils = require "telescope.utils"
 
-      vim.cmd [[autocmd! ColorScheme * highlight TelescopeBorder guifg=white guibg=NONE]]
-
       local telescope_mappings = {
         ["<C-u>"] = false,
         ["<C-d>"] = "delete_buffer",
@@ -30,6 +28,7 @@ return {
           path_display = { shorten = { len = 2, exclude = { 1, 2, -1 } } },
         },
       }
+      vim.cmd [[autocmd! ColorScheme * highlight TelescopeBorder guifg=white guibg=NONE]]
 
       local findInCwd = function()
         builtin.find_files { cwd = utils.buffer_dir() }
