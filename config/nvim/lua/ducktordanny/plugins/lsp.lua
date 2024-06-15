@@ -104,12 +104,22 @@ return {
         ensure_installed = vim.tbl_keys(servers),
       }
 
+      vim.cmd [[autocmd! ColorScheme * highlight NormalFloat]]
+      vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=NONE]]
+      vim.diagnostic.config {
+        float = { border = "rounded" },
+      }
+
       mason_lspconfig.setup_handlers {
         function(server_name)
           require("lspconfig")[server_name].setup {
             capabilities = capabilities,
             on_attach = on_attach,
             settings = servers[server_name],
+            handlers = {
+              ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+              ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+            },
           }
         end,
       }
@@ -118,10 +128,14 @@ return {
 
       local cmp = require "cmp"
       local luasnip = require "luasnip"
-      require("luasnip.loaders.from_vscode").lazy_load({ paths = "./snippets" })
+      require("luasnip.loaders.from_vscode").lazy_load { paths = "./snippets" }
       luasnip.config.setup {}
 
       cmp.setup {
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)

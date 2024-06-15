@@ -11,6 +11,10 @@ return {
   },
   {
     "xiyaowong/transparent.nvim",
-    opts = {},
+    opts = {
+      extra_groups = {
+        "NormalFloat",
+      },
+    },
   },
 }
