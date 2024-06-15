@@ -15,6 +15,7 @@ return {
       extra_groups = {
         "TelescopeNormal",
         "NormalFloat",
+        "FloatBorder",
       },
     },
   },

@@ -104,8 +104,7 @@ return {
         ensure_installed = vim.tbl_keys(servers),
       }
 
-      vim.cmd [[autocmd! ColorScheme * highlight NormalFloat]]
-      vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=NONE]]
+      vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white]]
       vim.diagnostic.config {
         float = { border = "rounded" },
       }
