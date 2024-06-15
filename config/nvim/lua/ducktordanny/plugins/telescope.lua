@@ -9,6 +9,8 @@ return {
       local builtin = require "telescope.builtin"
       local utils = require "telescope.utils"
 
+      vim.cmd [[autocmd! ColorScheme * highlight TelescopeBorder guifg=white guibg=NONE]]
+
       local telescope_mappings = {
         ["<C-u>"] = false,
         ["<C-d>"] = "delete_buffer",
