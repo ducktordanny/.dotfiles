@@ -16,6 +16,11 @@ return {
           command = "js-debug-adapter",
         },
       }
+      dap.adapters.chrome = {
+        type = "executable",
+        command = "node",
+        args = { os.getenv "HOME" .. "/.config/.dotfiles/.repos/vscode-chrome-debug/out/src/chromeDebug.js" },
+      }
 
       for _, language in ipairs { "typescript", "javascript" } do
         dap.configurations[language] = {
@@ -25,7 +30,19 @@ return {
             name = "Launch File",
             program = "${file}",
             cwd = "${workspaceFolder}",
+            sourceMaps = true,
             runtimeExecutable = "node",
+          },
+          {
+            type = "chrome",
+            request = "attach",
+            name = "Chrome",
+            program = "${file}",
+            cwd = vim.fn.getcwd(),
+            sourceMaps = true,
+            protocol = "inspector",
+            port = 9222,
+            webRoot = "${workspaceFolder}",
           },
         }
       end
