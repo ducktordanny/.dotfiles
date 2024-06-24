@@ -2,8 +2,11 @@ return {
   {
     "mfussenegger/nvim-dap",
     keys = {
+      { "<leader>d", "<cmd>DapContinue<cr>", desc = "[D]ap continue" },
       { "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "[D]ap toggle [b]reakpoint" },
-      { "<leader>dr", "<cmd>DapContinue<cr>", desc = "[D]ap continue [r]un" },
+      { "<leader>ds", "<cmd>DapStepOver<cr>", desc = "[D]ap [s]tep over" },
+      { "<leader>do", "<cmd>DapStepOut<cr>", desc = "[D]ap step [o]ut" },
+      { "<leader>di", "<cmd>DapStepInto<cr>", desc = "[D]ap step [i]nto" },
     },
     config = function()
       local dap = require "dap"
@@ -19,6 +22,7 @@ return {
       dap.adapters.chrome = {
         type = "executable",
         command = "node",
+        -- Should have repo cloned, insatll deps, build
         args = { os.getenv "HOME" .. "/.config/.dotfiles/.repos/vscode-chrome-debug/out/src/chromeDebug.js" },
       }
 
@@ -32,6 +36,12 @@ return {
             cwd = "${workspaceFolder}",
             sourceMaps = true,
             runtimeExecutable = "node",
+          },
+          {
+            type = "pwa-node",
+            request = "attach",
+            name = "Auto Attach",
+            cwd = vim.fn.getcwd(),
           },
           {
             type = "chrome",
@@ -78,15 +88,18 @@ return {
           },
         },
       }
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
+      vim.keymap.set("n", "<leader>du", dapui.open, { desc = "[D]ap [U]I" })
+      vim.keymap.set("n", "<leader>duc", dapui.close, { desc = "[D]ap [U]I [C]lose" })
+    end,
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("nvim-dap-virtual-text").setup()
     end,
   },
 }
