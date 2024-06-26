@@ -2,7 +2,7 @@ return {
   {
     "mfussenegger/nvim-dap",
     keys = {
-      { "<leader>d", "<cmd>DapContinue<cr>", desc = "[D]ap continue" },
+      { "<leader>dj", "<cmd>DapContinue<cr>", desc = "Dap continue" },
       { "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "[D]ap toggle [b]reakpoint" },
       { "<leader>ds", "<cmd>DapStepOver<cr>", desc = "[D]ap [s]tep over" },
       { "<leader>do", "<cmd>DapStepOut<cr>", desc = "[D]ap step [o]ut" },
