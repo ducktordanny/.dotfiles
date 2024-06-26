@@ -5,8 +5,7 @@ return {
       vim.keymap.set("n", "<leader>ga", "<cmd>Git add --all<cr>", { desc = "[G]it add [a]ll" })
       vim.keymap.set("n", "<leader>gc", '<cmd>Git commit -m ""', { desc = "[G]it [C]ommit" })
       vim.keymap.set("n", "<leader>gs", "<cmd>Git status<cr>", { desc = "[G]it [S]tatus" })
-      vim.keymap.set("n", "<leader>gp", "<cmd>Git push --force-with-lease<cr>",
-        { desc = "[G]it [P]ush (using --force-with-lease)" })
+      vim.keymap.set("n", "<leader>gp", "<cmd>split<cr><cmd>term git push --force-with-lease<cr>", { desc = "[G]it [P]ush (using --force-with-lease)" })
       vim.keymap.set("n", "<leader>gf", "<cmd>Git fetch<cr>", { desc = "[G]it [F]etch" })
       vim.keymap.set("n", "<leader>grb", "<cmd>Git rebase", { desc = "[G]it [R]e[b]ase" })
       vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<cr>", { desc = "[G]it [B]lame" })
