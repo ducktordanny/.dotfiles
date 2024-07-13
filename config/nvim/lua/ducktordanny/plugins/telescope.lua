@@ -24,45 +24,32 @@ return {
             i = telescope_mappings,
             n = telescope_mappings,
           },
-          file_ignore_patterns = {},
+          file_ignore_patterns = { "^.git/" },
           path_display = { shorten = { len = 2, exclude = { 1, 2, -1 } } },
         },
       }
       vim.cmd [[autocmd! ColorScheme * highlight TelescopeBorder guifg=white guibg=NONE]]
 
+      local findFiles = function()
+        builtin.find_files { hidden = true }
+      end
+      local findDir = function()
+        builtin.find_files { find_command = { "fd", "--type", "d" } }
+      end
       local findInCwd = function()
-        builtin.find_files { cwd = utils.buffer_dir() }
+        builtin.find_files { cwd = utils.buffer_dir(), hidden = true }
       end
 
       -- See `:help telescope.builtin`
       vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
-      vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "[/] Fuzzily search in current buffer" })
-      vim.keymap.set("n", "<leader>sf", builtin.git_files, { desc = "[S]earch Git [F]iles" })
-      vim.keymap.set("n", "<leader>sff", builtin.find_files, { desc = "[S]earch [F]iles" })
+      vim.keymap.set("n", "<leader>sf", findFiles, { desc = "[S]earch [F]iles" })
+      vim.keymap.set("n", "<leader>sl", findDir, { desc = "[S]earch Dirs" })
       vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-      vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
       vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
       vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
       vim.keymap.set("n", "<leader>so", builtin.oldfiles, { desc = "[S]earch [O]ldfiles" })
       vim.keymap.set("n", "<leader>ss", findInCwd, { desc = "[S]earch current buffer's directory" })
-      vim.keymap.set("n", "<leader>sj", "<cmd>Telescope git_branches<cr>", { desc = "Search git branches" })
-
-      -- Previewless search
-      vim.keymap.set("n", "<leader>hsf", function()
-        builtin.find_files { previewer = false }
-      end, { desc = "[H]idden preview for [S]earch [F]iles" })
-
-      vim.keymap.set("n", "<leader>hsw", function()
-        builtin.grep_string { preview = false }
-      end, { desc = "[H]idden preview for [S]earch current [W]ord" })
-
-      vim.keymap.set("n", "<leader>hsd", function()
-        builtin.diagnostics { preview = false }
-      end, { desc = "[H]idden preview for [S]earch [D]iagnostics" })
-
-      vim.keymap.set("n", "<leader>hso", function()
-        builtin.oldfiles { preview = false }
-      end, { desc = "[H]idden preview for [S]earch [O]ldfiles" })
+      vim.keymap.set("n", "<leader>sj", builtin.git_branches, { desc = "Search git branches" })
     end,
   },
   {

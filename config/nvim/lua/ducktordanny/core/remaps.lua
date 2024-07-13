@@ -1,8 +1,4 @@
 -- Keymaps for better default experience
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "x", '"_x')
 
@@ -49,8 +45,6 @@ vim.keymap.set("n", "<leader>sn", "<cmd>noh<cr>", { desc = "Remove search highli
 vim.keymap.set("n", "<leader>d", '"_d', { desc = "Black hole delete (no save to regs)" })
 
 vim.keymap.set("n", "<leader>e", "<cmd>Explore<cr>", { desc = "Open [e]xplorer with Explore" })
-vim.keymap.set("n", "<leader>es", "<cmd>Sexplore<cr>", { desc = "Open [e]xplorer with [S]explore" })
-vim.keymap.set("n", "<leader>ev", "<cmd>Vexplore<cr>", { desc = "Open [e]xplorer with [V]explore" })
 
 vim.api.nvim_create_autocmd("filetype", {
   pattern = "netrw",
@@ -68,14 +62,13 @@ vim.api.nvim_create_autocmd("filetype", {
 vim.keymap.set("n", "<leader>j", "<cmd>cnext<cr>", { desc = "Jump to next quick fix list item" })
 vim.keymap.set("n", "<leader>k", "<cmd>cprev<cr>", { desc = "Jump to previous quick fix list item" })
 
-vim.keymap.set("n", "<M-j>", "5<C-w>-", { desc = "Decrease height size by 5" })
-vim.keymap.set("n", "<M-k>", "5<C-w>+", { desc = "Increase height size by 5" })
-vim.keymap.set("n", "<M-h>", "5<C-w><", { desc = "Decrease width size by 5" })
-vim.keymap.set("n", "<M-l>", "5<C-w>>", { desc = "Increase width size by 5" })
-vim.keymap.set("n", "<M-u>", "<C-w>=", { desc = "Equalize width and height of all splits" })
-
 -- Fun
 vim.keymap.set("n", "<leader>ll", "<cmd>!fortune | cowsay -f tux<cr>", { desc = "Cowsay a fortune" })
 
 -- Terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-N>", { desc = "Terminal mode to Normal mode" })
+
+-- Yank magic
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set("i", "<C-p>", "<Esc>pi")

@@ -1,3 +1,5 @@
-require("ducktordanny.core")
-require("ducktordanny.lazy")
-require("ducktordanny.custom")
+require "ducktordanny.core.settings"
+require "ducktordanny.config.lazy"
+require "ducktordanny.core.remaps"
+require "ducktordanny.core.globals"
+require "ducktordanny.custom"

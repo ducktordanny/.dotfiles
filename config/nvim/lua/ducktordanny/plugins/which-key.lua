@@ -1,9 +1,7 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-  end,
-  opts = {}
+  commit = "ccf0276",
+  dependencies = { "echasnovski/mini.nvim", "nvim-tree/nvim-web-devicons" },
+  opts = {},
 }

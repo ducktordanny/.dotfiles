@@ -85,6 +85,8 @@ return {
         jsonls = {},
         jdtls = {},
         omnisharp = {},
+        css_variables = {},
+        somesass_ls = {},
       }
 
       -- Setup neovim lua configuration
@@ -126,7 +128,7 @@ return {
 
       local cmp = require "cmp"
       local luasnip = require "luasnip"
-      require("luasnip.loaders.from_vscode").lazy_load { paths = "./snippets" }
+      require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets", "./.work-snippets" } }
       luasnip.config.setup {}
 
       cmp.setup {

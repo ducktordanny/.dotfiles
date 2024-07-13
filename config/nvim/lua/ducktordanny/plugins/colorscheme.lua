@@ -2,6 +2,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
+    priority = 1000,
     config = function()
       require("rose-pine").setup {
         variant = "moon",
@@ -12,6 +13,9 @@ return {
         callback = function()
           vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = White })
           vim.api.nvim_set_hl(0, "FloatBorder", { fg = White })
+          vim.api.nvim_set_hl(0, "IlluminatedWordText", { bold = true })
+          vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bold = true })
+          vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bold = true })
         end,
       })
       vim.cmd.colorscheme "rose-pine"
@@ -27,5 +31,10 @@ return {
         "TelescopeBorder",
       },
     },
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
   },
 }

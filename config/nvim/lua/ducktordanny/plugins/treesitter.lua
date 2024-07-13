@@ -11,11 +11,6 @@ return {
 
       telescope.load_extension "live_grep_args"
       vim.keymap.set("n", "<leader>sg", telescope.extensions.live_grep_args.live_grep_args, { desc = "[S]earch by [G]rep" })
-
-      -- Previewless search
-      vim.keymap.set("n", "<leader>hsg", function()
-        telescope.extensions.live_grep_args.live_grep_args { previewer = false }
-      end, { desc = "[H]idden preview for [S]earch by [G]rep" })
     end,
   },
   {
