@@ -2,7 +2,12 @@ return {
   {
     "tpope/vim-fugitive",
     config = function()
-      vim.keymap.set("n", "<leader>gp", "<cmd>split<cr><cmd>term git push --force-with-lease<cr>", { desc = "[G]it [P]ush (using --force-with-lease)" })
+      vim.keymap.set("n", "<leader>gp", function()
+        vim.cmd "split"
+        vim.cmd "term git push --force-with-lease"
+        vim.cmd "startinsert"
+        vim.cmd "autocmd TermClose <buffer> call FugitiveDidChange()"
+      end, { desc = "[G]it [P]ush (using --force-with-lease)" })
       vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<cr>", { desc = "[G]it [B]lame" })
       vim.keymap.set("n", "<leader>gd", function()
         vim.cmd ":Gvdiffsplit!"
