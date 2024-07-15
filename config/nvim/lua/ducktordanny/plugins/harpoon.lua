@@ -75,7 +75,7 @@ return {
 
           map("i", "<C-r>", function()
             local index = action_state.get_selected_entry().index
-            harpoon:list():removeAt(index)
+            harpoon:list():remove_at(index)
             toggle_telescope(harpoon:list())
           end)
 
@@ -86,7 +86,7 @@ return {
     end
 
     vim.keymap.set("n", "<leader>hh", function()
-      harpoon:list():append()
+      harpoon:list():add()
     end, { desc = "Add file to harpoon" })
     vim.keymap.set("n", "<leader>h", function()
       toggle_telescope(harpoon:list())
