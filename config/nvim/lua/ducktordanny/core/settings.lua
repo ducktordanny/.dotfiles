@@ -66,3 +66,8 @@ vim.g.netrw_winsize = 25
 
 -- highlight current line
 vim.o.cursorline = true
+
+if vim.fn.executable "rg" == 1 then
+  vim.opt.grepprg = "rg --vimgrep"
+  vim.opt.grepformat = "%f:%l:%c:%m"
+end
