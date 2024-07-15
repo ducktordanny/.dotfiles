@@ -9,6 +9,7 @@ return {
         highlight_groups = {
           typescriptImport = { fg = "rose" },
           typescriptVariable = { fg = "pine" },
+          yamlBlockMappingKey = { fg = "rose" }
         },
       }
 
