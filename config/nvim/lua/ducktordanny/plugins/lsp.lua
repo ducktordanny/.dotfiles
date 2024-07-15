@@ -76,8 +76,10 @@ return {
             },
           },
         },
+        stylua = {},
         tailwindcss = {},
         angularls = {},
+        nxls = {},
         cssls = {},
         cssmodules_ls = {},
         eslint = {},
@@ -87,6 +89,12 @@ return {
         omnisharp = {},
         css_variables = {},
         somesass_ls = {},
+        yamlls = {},
+        yamllint = {},
+        markdownlint = {},
+        mdformat = {},
+        prettier = {},
+        gopls = {},
       }
 
       -- Setup neovim lua configuration
