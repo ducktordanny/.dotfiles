@@ -34,7 +34,7 @@ return {
         builtin.find_files { hidden = true }
       end
       local findDir = function()
-        builtin.find_files { find_command = { "fd", "--type", "d" } }
+        builtin.find_files { find_command = { "fd", "--type", "d" }, prompt_title = "Find Directories" }
       end
       local findInCwd = function()
         builtin.find_files { cwd = utils.buffer_dir(), hidden = true }
