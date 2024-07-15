@@ -6,6 +6,10 @@ return {
     config = function()
       require("rose-pine").setup {
         variant = "moon",
+        highlight_groups = {
+          typescriptImport = { fg = "rose" },
+          typescriptVariable = { fg = "pine" },
+        },
       }
 
       vim.api.nvim_create_autocmd("ColorScheme", {
@@ -18,7 +22,7 @@ return {
           vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bold = true })
         end,
       })
-      vim.cmd.colorscheme "rose-pine"
+      vim.cmd.colorscheme "rose-pine-moon"
     end,
   },
   {
