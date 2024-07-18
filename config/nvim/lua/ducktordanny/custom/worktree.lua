@@ -26,7 +26,6 @@ M._get_worktree_paths = function()
     elseif info[2] == "(bare)" then
       bare_path = info[1]
     end
-    P(info)
   end
 
   local current_tree = "-"
