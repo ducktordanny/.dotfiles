@@ -7,6 +7,8 @@ local themes = require "telescope.themes"
 
 local M = {}
 
+M._current_worktree = nil
+
 M._get_worktree_paths = function(no_current_tree_text)
   no_current_tree_text = no_current_tree_text or ""
   local project_path = vim.fn.getcwd()
@@ -61,11 +63,15 @@ M._handle_worktree_switch = function(tree_path)
   vim.cmd("cd" .. tree_path)
   vim.cmd ":SessionRestore"
   vim.cmd ":LspStart"
+  M._current_worktree = nil
 end
 
 M.get_current_worktree = function()
-  local worktree_details = M._get_worktree_paths()
-  return worktree_details.current_tree
+  if M._current_worktree == nil then
+    local worktree_details = M._get_worktree_paths()
+    M._current_worktree = worktree_details.current_tree
+  end
+  return M._current_worktree
 end
 
 M.select_worktree = function(opts)
