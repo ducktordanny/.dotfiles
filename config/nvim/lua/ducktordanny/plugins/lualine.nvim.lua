@@ -16,7 +16,7 @@ return {
         "diff",
         {
           "diagnostics",
-          symbols = { error = "🚨", warn = "⚠️ ", info = "ℹ️ ", hint = "💬" },
+          symbols = { error = "🚨 ", warn = "⚠️  ", info = "ℹ️  ", hint = "💬 " },
         },
       },
       lualine_c = {
