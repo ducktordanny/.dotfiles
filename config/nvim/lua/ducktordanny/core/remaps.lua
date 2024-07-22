@@ -71,4 +71,4 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-N>", { desc = "Terminal mode to Normal mo
 -- Yank magic
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set("i", "<C-p>", "<Esc>pi")
+vim.keymap.set("i", "<C-p>", "<Esc>pa")
