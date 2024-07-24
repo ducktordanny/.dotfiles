@@ -27,7 +27,7 @@
     "Red Component" : 0.70980000495910645,
     "Blue Component" : 1
   },
-  "Blend" : 0.14999999999999997,
+  "Blend" : 0.20000000000000001,
   "Mouse Reporting" : true,
   "Ansi 4 Color" : {
     "Green Component" : 0,
@@ -46,6 +46,7 @@
     "slogin",
     "telnet"
   ],
+  "Non-ASCII Ligatures" : false,
   "Scrollback Lines" : 100000,
   "Draw Powerline Glyphs" : true,
   "Flashing Bell" : false,
@@ -64,7 +65,7 @@
   },
   "Use Non-ASCII Font" : false,
   "Shortcut" : "",
-  "Background Image Location" : "\/Users\/daniellazar\/.config\/.dotfiles\/assets\/iterm.wallpaper.jpg",
+  "Background Image Location" : "\/Users\/daniellazar\/Pictures\/anime 2\/2rZvQF.webp",
   "Bold Color" : {
     "Green Component" : 1,
     "Red Component" : 1,
@@ -351,17 +352,19 @@
   "Window Type" : 12,
   "Use Bright Bold" : true,
   "Cursor Text Color" : {
-    "Green Component" : 1,
-    "Red Component" : 1,
-    "Blue Component" : 1
+    "Red Component" : 0,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0,
+    "Alpha Component" : 1,
+    "Green Component" : 0
   },
   "Default Bookmark" : "No",
   "Cursor Color" : {
-    "Red Component" : 0.5,
+    "Red Component" : 0.37014595977962017,
     "Color Space" : "sRGB",
-    "Blue Component" : 0.5,
+    "Blue Component" : 0,
     "Alpha Component" : 1,
-    "Green Component" : 0.5
+    "Green Component" : 0.956390380859375
   },
   "Ansi 1 Color" : {
     "Green Component" : 0,
@@ -393,10 +396,11 @@
     "Red Component" : 0,
     "Blue Component" : 0
   },
-  "Blur" : false,
+  "Left Option Key Changeable" : true,
   "Vertical Spacing" : 1.1000000000000001,
-  "Normal Font" : "MesloLGS-NF-Regular 13",
+  "Blur" : false,
   "Use Underline Color" : false,
+  "Normal Font" : "MesloLGS-NF-Regular 13",
   "Ansi 7 Color" : {
     "Green Component" : 0.73333334922790527,
     "Red Component" : 0.73333334922790527,
@@ -436,7 +440,7 @@
   },
   "Initial Text" : "",
   "Screen" : -1,
-  "Non Ascii Font" : "Monaco 12",
+  "Non Ascii Font" : "SymbolsNF 13",
   "Ansi 13 Color" : {
     "Green Component" : 0.3333333432674408,
     "Red Component" : 1,
