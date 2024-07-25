@@ -60,10 +60,6 @@ vim.o.splitbelow = true
 -- Scroll thingy
 vim.o.scrolloff = 8
 
--- Netrw stuff
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-
 -- highlight current line
 vim.o.cursorline = true
 

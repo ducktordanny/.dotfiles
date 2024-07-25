@@ -44,21 +44,6 @@ vim.keymap.set("n", "<leader>sn", "<cmd>noh<cr>", { desc = "Remove search highli
 -- Black hole delete
 vim.keymap.set("n", "<leader>d", '"_d', { desc = "Black hole delete (no save to regs)" })
 
-vim.keymap.set("n", "<leader>e", "<cmd>Explore<cr>", { desc = "Open [e]xplorer with Explore" })
-
-vim.api.nvim_create_autocmd("filetype", {
-  pattern = "netrw",
-  desc = "Better mappings for netrw",
-  callback = function()
-    local bind = function(lhs, rhs)
-      vim.keymap.set("n", lhs, rhs, { remap = true, buffer = true })
-    end
-
-    bind("<C-l>", "<cmd>TmuxNavigateRight<cr>")
-    bind("<c-h>", "<cmd>TmuxNavigateLeft<cr>")
-  end,
-})
-
 vim.keymap.set("n", "<leader>j", "<cmd>cnext<cr>", { desc = "Jump to next quick fix list item" })
 vim.keymap.set("n", "<leader>k", "<cmd>cprev<cr>", { desc = "Jump to previous quick fix list item" })
 
