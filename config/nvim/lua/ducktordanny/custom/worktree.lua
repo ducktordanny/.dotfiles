@@ -5,10 +5,21 @@ local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 local themes = require "telescope.themes"
 
+local last_buffer = require "ducktordanny.custom.last_buffer"
+
 local M = {}
 
+---@class WorktreePaths
+---@field tree_paths string[]
+---@field bare_path string
+---@field current_tree string
+---@field branch_names string[]
+
+---@type string | nil
 M._current_worktree = nil
 
+---@param no_current_tree_text string | nil The text for current tree to return if no worktree is selected.
+---@return WorktreePaths
 M._get_worktree_paths = function(no_current_tree_text)
   no_current_tree_text = no_current_tree_text or ""
   local project_path = vim.fn.getcwd()
@@ -44,6 +55,10 @@ M._get_worktree_paths = function(no_current_tree_text)
   }
 end
 
+---@param tree_paths string[]
+---@param bare_path string
+---@param branch_names string[]
+---@return string[]
 M._get_formated_tree_list = function(tree_paths, bare_path, branch_names)
   local tree_names = {}
 
@@ -55,17 +70,20 @@ M._get_formated_tree_list = function(tree_paths, bare_path, branch_names)
   return tree_names
 end
 
+---@param tree_path string
 M._handle_worktree_switch = function(tree_path)
   vim.cmd ":wa"
   vim.cmd ":LspStop"
-  vim.cmd ":SessionSave"
+  last_buffer.save_for_current_cwd()
   vim.cmd ":%bd"
   vim.cmd("cd" .. tree_path)
-  vim.cmd ":SessionRestore"
+  last_buffer.restore_by_cwd()
   vim.cmd ":LspStart"
   M._current_worktree = nil
 end
 
+---Returns the currently selected worktree (from cache).
+---@return string
 M.get_current_worktree = function()
   if M._current_worktree == nil then
     local worktree_details = M._get_worktree_paths()
@@ -74,6 +92,7 @@ M.get_current_worktree = function()
   return M._current_worktree
 end
 
+---@param opts any Telescope opts
 M.select_worktree = function(opts)
   opts = opts or {}
   local trees = M._get_worktree_paths "-"
