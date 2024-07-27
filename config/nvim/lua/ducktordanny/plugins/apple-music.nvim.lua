@@ -3,6 +3,8 @@ return {
   dependencies = { "nvim-telescope/telescope.nvim" },
   config = function()
     local apple_music = require "apple-music"
+    vim.api.nvim_create_user_command("AMPause", apple_music.pause, {})
+    vim.api.nvim_create_user_command("AMResume", apple_music.resume, {})
     vim.api.nvim_create_user_command("AMSongs", apple_music.select_track_telescope, {})
     vim.api.nvim_create_user_command("AMAlbums", apple_music.select_album_telescope, {})
     vim.api.nvim_create_user_command("AMPlaylist", apple_music.select_playlist_telescope, {})
