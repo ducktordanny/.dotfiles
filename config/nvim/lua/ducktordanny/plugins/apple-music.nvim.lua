@@ -7,5 +7,7 @@ return {
     vim.api.nvim_create_user_command("AMPlaylist", require("apple-music").select_playlist_telescope, {})
     vim.api.nvim_create_user_command("AMShuffle", require("apple-music").toggle_shuffle, {})
     vim.api.nvim_create_user_command("AMCleanTempPlaylists", require("apple-music").cleanup_all, {})
+    vim.api.nvim_create_user_command("AMFavorite", require("apple-music").favorite_current_track, {})
+    vim.api.nvim_create_user_command("AMUnfavorite", require("apple-music").unfavorite_current_track, {})
   end,
 }
