@@ -24,11 +24,11 @@ config.window_frame = {
 	border_bottom_color = border_color,
 	border_top_color = border_color,
 }
--- #5fd700
+local cursor_color = "#5fd700"
 config.colors = {
-	cursor_bg = "#5fd700",
+	cursor_bg = cursor_color,
 	cursor_fg = "black",
-	cursor_border = "#5fd700",
+	cursor_border = cursor_color,
 }
 
 config.enable_tab_bar = false
