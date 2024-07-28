@@ -1,9 +1,7 @@
 return {
   "folke/trouble.nvim",
-  opts = {}, -- for default options, refer to the configuration section for custom setup.
-  cmd = "Trouble",
   config = function()
+    require("trouble").setup {}
     require "ducktordanny.custom.plugins.trouble"
   end,
-  keys = {},
 }

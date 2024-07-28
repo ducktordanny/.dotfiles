@@ -9,7 +9,7 @@ return {
         highlight_groups = {
           typescriptImport = { fg = "rose" },
           typescriptVariable = { fg = "pine" },
-          yamlBlockMappingKey = { fg = "rose" }
+          yamlBlockMappingKey = { fg = "rose" },
         },
       }
 
@@ -34,6 +34,13 @@ return {
         "FloatBorder",
         "TelescopeNormal",
         "TelescopeBorder",
+        "TroubleText",
+        "TroubleCount",
+        "TroubleNormal",
+        "TroubleIndent",
+        "TroubleLocation",
+        "TroublePreview",
+        "TroubleFile",
       },
     },
   },
