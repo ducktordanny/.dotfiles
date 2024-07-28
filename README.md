@@ -23,14 +23,14 @@ As mentioned some of the configs had separate repos, those got archived, but can
 
 ### After install steps
 
-1. You can close the default Terminal app and open iTerm, open its preferences and import the profile from `~/.config/.dotfiles/assets/iterm2.profile.json` (also see [here](https://github.com/ducktordanny/.dotfiles/blob/master/assets/iterm2.profile.json)).
-2. Reopen iTerm and you should see the powerlevel10k configurator, choose your options as you like.
-3. Go to the `~/.config/.dotfiles` folder and run `bash apply-dotfiles.sh`.
+1. You can close the default Terminal app and open WezTerm.
+2. You should see the powerlevel10k configurator, choose your options as you like.
+3. Go to the `~/.config/.dotfiles` folder and run `bash apply-dotfiles.sh`. After this, WezTerm might need to be restarted.
 4. Open tmux by running the `tmux` command the install tmux plugins by `<C-Space>I`.
 5. Open NeoVim by running `nvim`, then it should install the configured plugins, and LSPs.
-    - After it finished you might need to do a `:TransparentEnable` to get a transparent background.
+   - After it finished you might need to do a `:TransparentEnable` to get a transparent background.
 6. Open Karabiner-Elements, follow its access requets, then:
-    - go to "Simple Modifications" and add mappings for "caps_lock" -> "left_control" and "left_control" -> "caps_lock"
-    - go to "Complex Modifications" and add a rule for caps_lock to be mapped to command+control+option+shift. This will be your hyper key
+   - go to "Simple Modifications" and add mappings for "caps_lock" -> "left_control" and "left_control" -> "caps_lock"
+   - go to "Complex Modifications" and add a rule for caps_lock to be mapped to command+control+option+shift. This will be your hyper key
 7. In the `~/.config/.dotfiles` run: `git remote set-url origin git@github.com:ducktordanny/.dotfiles.git` and set an SSH key.
 8. For other things and Mac OS system settings see the `~/.config/.dotfiles/MacOS.settings.md` (also see [here](https://github.com/ducktordanny/.dotfiles/blob/master/MacOS.settings.md)) file.

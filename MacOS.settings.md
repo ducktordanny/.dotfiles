@@ -14,7 +14,7 @@ Go to `System Settings/Keyboard` and set "Key repeat rate" to Fast (fully right)
 
 Use `C-Up` or your TrackPad and add new virtual Desktops up to 10. Then go to `System Settings/Keyboard/Keyboard Shortcuts.../Mission Control` and open down "Mission Control" in the list and enable all the option with "Switch to Desktop X". This will allow to jump between Desktops real fast, e.g.: to go to the first space press `C-1` and so on (C-0 will go to the 10th).
 
-I usually use the first Desktop to have there my browser, then the second for iTerm third usually Teams, forth for other things like Discord, Messenger, etc.
+I usually use the first Desktop to have there my browser, then the second for terminal, third usually Teams, forth for other things like Discord, Messenger, etc.
 
 ## Spell check, why?
 

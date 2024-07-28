@@ -31,7 +31,7 @@ brew install font-sf-pro
 brew install --cask sf-symbols
 
 echo "Installing terminal related things..."
-brew install --cask iterm2
+brew install --cask wezterm
 brew install powerlevel10k zsh-autosuggestions zsh-syntax-highlighting
 echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -62,7 +62,7 @@ echo "fortune | cowsay -f tux" >> ~/.zshrc
 echo "Done. ✅"
 
 echo "Next steps:"
-echo -e "\t- Quit current terminal and open iTerm."
+echo -e "\t- Quit current terminal and open WezTerm."
 echo -e "\t- Set up powerlevel10k preferences (it will come up right away)."
 echo -e "\t- Then cd into ~/.config/.dotfiles and run 'bash apply-dotfiles'"
 

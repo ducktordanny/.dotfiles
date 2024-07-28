@@ -1,20 +1,8 @@
 # Tmux config
 
-> This repo contains the plugins and preferences of my Tmux config, and also contains a JSON file with my iTerm2 profile that I'm using.
+> This repo contains the plugins and preferences of my Tmux config.
 
-## Setup iTerm2 & Powerlevel10k
-
-1. Install iTerm2
-
-[Download it from here](https://iterm2.com/downloads.html)
-
-2. Use the profile from this repo
-
-You can import the profile by opening iTerm2 preferences (⌘+,) and then navigate to `Profiles` and at the bottom click on the `Other Actions... > Import JSON Profiles`.
-
-[iterm2.profile.json](./iterm2.profile.json)
-
-3. Install and setup Powerlevel10k
+## Setup Powerlevel10k
 
 [Full manual for installation here](https://github.com/romkatv/powerlevel10k)
 
