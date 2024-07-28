@@ -13,11 +13,12 @@ for item in */; do
     fi
 done
 for folder in "${folders[@]}"; do
+    rm -rf ~/.config/$folder
     cp -r $script_directory/$folder ~/.config/$folder
 done
 
-tmux source ~/.config/tmux/tmux.conf
-yabai --restart-service
-skhd --restart-service
-sketchybar --reload
+# tmux source ~/.config/tmux/tmux.conf
+# yabai --restart-service
+# skhd --restart-service
+# sketchybar --reload
 cd ..
