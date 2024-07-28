@@ -64,3 +64,9 @@ vim.keymap.set("n", "<A-k>", "5<C-w>+", { desc = "Increase height size by 5" })
 vim.keymap.set("n", "<A-h>", "5<C-w><", { desc = "Decrease width size by 5" })
 vim.keymap.set("n", "<A-l>", "5<C-w>>", { desc = "Increase width size by 5" })
 vim.keymap.set("n", "<A-u>", "<C-w>=", { desc = "Equalize width and height of all splits" })
+
+-- apply configs
+local apply_dotfiles_config = function()
+  vim.cmd(":!bash " .. vim.fn.expand "$HOME/.config/.dotfiles/setup/apply-config.sh")
+end
+vim.api.nvim_create_user_command("ApplyDotfilesConfigs", apply_dotfiles_config, {})
