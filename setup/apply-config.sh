@@ -2,9 +2,8 @@
 
 # NOTE: This script collects the config folders from this repo and copies them under ~/.config/ folder, and then restart some of their services or reattach them.
 
-cd config
-script_path="$(readlink -f "$0")"
-script_directory="$(dirname "$script_path")"
+current="$PWD"
+cd ~/.config/.dotfiles/config
 
 folders=()
 for item in */; do
@@ -13,12 +12,12 @@ for item in */; do
     fi
 done
 for folder in "${folders[@]}"; do
-    rm -rf ~/.config/$folder
-    cp -r $script_directory/$folder ~/.config/$folder
+    rm -rf ~/.config/$folder/*
+    cp -r ~/.config/.dotfiles/config/$folder ~/.config/$folder
 done
 
 # tmux source ~/.config/tmux/tmux.conf
 # yabai --restart-service
 # skhd --restart-service
 # sketchybar --reload
-cd ..
+cd "$current"
