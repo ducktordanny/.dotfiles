@@ -5,7 +5,7 @@ local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 local themes = require "telescope.themes"
 
-local last_buffer = require "ducktordanny.custom.last_buffer"
+local session = require "ducktordanny.custom.session"
 
 local M = {}
 
@@ -74,10 +74,10 @@ end
 M._handle_worktree_switch = function(tree_path)
   vim.cmd ":wa"
   vim.cmd ":LspStop"
-  last_buffer.save_for_current_cwd()
+  session.create_session()
   vim.cmd ":%bd"
   vim.cmd("cd" .. tree_path)
-  last_buffer.restore_by_cwd()
+  session.restore_session()
   vim.cmd ":LspStart"
   M._current_worktree = nil
 end
@@ -123,6 +123,20 @@ end
 
 M.select_worktree_dropdown = function()
   M.select_worktree(themes.get_dropdown {})
+end
+
+M.save_worktree_before_leave = function()
+  vim.api.nvim_create_autocmd("VimLeavePre", {
+    pattern = "*",
+    callback = function()
+      -- local current_worktree = M.get_current_worktree()
+      -- local should_skip = current_worktree == ""
+      -- if should_skip then
+      --   return
+      -- end
+      M.create_session()
+    end,
+  })
 end
 
 return M
