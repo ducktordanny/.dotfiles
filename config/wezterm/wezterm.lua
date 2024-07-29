@@ -2,7 +2,7 @@ local wezterm = require "wezterm"
 
 local config = wezterm.config_builder()
 
-local dimmer = { brightness = 0.025 }
+local dimmer = { brightness = 0.015 }
 config.background = {
   {
     source = { File = wezterm.home_dir .. "/.config/.dotfiles/assets/cat-gang.jpeg" },
