@@ -24,6 +24,8 @@ telescope.setup {
 }
 vim.cmd [[autocmd! ColorScheme * highlight TelescopeBorder guifg=white guibg=NONE]]
 
+require("telescope").load_extension("ui-select")
+
 local findFiles = function()
   builtin.find_files { hidden = true }
 end
