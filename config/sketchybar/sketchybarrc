@@ -51,7 +51,7 @@ do
                               icon=${SPACE_ICONS[i]}                     \
                               background.color=0x44ffffff                \
                               background.corner_radius=5                 \
-                              background.height=20                       \
+                              background.height=28                       \
                               background.drawing=off                     \
                               icon.padding_left=12                       \
                               script="$PLUGIN_DIR/space.sh"              \
