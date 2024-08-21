@@ -74,10 +74,10 @@ end
 M._handle_worktree_switch = function(tree_path)
   vim.cmd ":wa"
   vim.cmd ":LspStop"
-  last_buffer.save_for_current_cwd()
+  -- last_buffer.save_for_current_cwd()
   vim.cmd ":%bd"
   vim.cmd("cd" .. tree_path)
-  last_buffer.restore_by_cwd()
+  -- last_buffer.restore_by_cwd()
   vim.cmd ":LspStart"
   M._current_worktree = nil
 end
@@ -103,22 +103,22 @@ M.select_worktree = function(opts)
   local tree_names = M._get_formated_tree_list(trees.tree_paths, trees.bare_path, trees.branch_names)
 
   pickers
-    .new(opts, {
-      prompt_title = "Worktrees (" .. trees.current_tree .. ")",
-      finder = finders.new_table {
-        results = tree_names,
-      },
-      sorter = conf.generic_sorter(opts),
-      attach_mappings = function(prompt_bufnr, _)
-        actions.select_default:replace(function()
-          actions.close(prompt_bufnr)
-          local selection = action_state.get_selected_entry()
-          M._handle_worktree_switch(trees.tree_paths[selection.index])
-        end)
-        return true
-      end,
-    })
-    :find()
+      .new(opts, {
+        prompt_title = "Worktrees (" .. trees.current_tree .. ")",
+        finder = finders.new_table {
+          results = tree_names,
+        },
+        sorter = conf.generic_sorter(opts),
+        attach_mappings = function(prompt_bufnr, _)
+          actions.select_default:replace(function()
+            actions.close(prompt_bufnr)
+            local selection = action_state.get_selected_entry()
+            M._handle_worktree_switch(trees.tree_paths[selection.index])
+          end)
+          return true
+        end,
+      })
+      :find()
 end
 
 M.select_worktree_dropdown = function()
