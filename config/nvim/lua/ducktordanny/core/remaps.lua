@@ -70,3 +70,7 @@ local apply_dotfiles_config = function()
   vim.cmd(":!bash " .. vim.fn.expand "$HOME/.config/.dotfiles/setup/apply-config.sh")
 end
 vim.api.nvim_create_user_command("ApplyDotfilesConfigs", apply_dotfiles_config, {})
+
+-- Insert line and stay in normal mode
+vim.keymap.set("n", "<leader>o", "o<Esc>")
+vim.keymap.set("n", "<leader>O", "O<Esc>")
