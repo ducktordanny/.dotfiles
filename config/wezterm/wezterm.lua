@@ -34,6 +34,7 @@ config.colors = {
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 config.font_size = 20
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 config.keys = {
   -- NOTE: For some reason the default zoom is set  to `SUPER + =`
