@@ -9,6 +9,9 @@ return {
         ["<C-l>"] = false,
         ["<leader>rl"] = "actions.refresh",
       },
+      win_options = {
+        winbar = "%{v:lua.require('oil').get_current_dir()}",
+      },
       view_options = {
         show_hidden = true,
       },
