@@ -73,12 +73,10 @@ end
 ---@param tree_path string
 M._handle_worktree_switch = function(tree_path)
   vim.cmd ":wa"
-  vim.cmd ":LspStop"
-  -- last_buffer.save_for_current_cwd()
+  last_buffer.save_for_current_cwd()
   vim.cmd ":%bd"
   vim.cmd("cd" .. tree_path)
-  -- last_buffer.restore_by_cwd()
-  vim.cmd ":LspStart"
+  last_buffer.restore_by_cwd()
   M._current_worktree = nil
 end
 
