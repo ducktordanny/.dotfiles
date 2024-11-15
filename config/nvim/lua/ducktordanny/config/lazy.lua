@@ -21,6 +21,13 @@ require("lazy").setup {
   spec = {
     { import = "ducktordanny.plugins" },
   },
+  ui = {
+    border = "single",
+    size = {
+      width = 0.8,
+      height = 0.8,
+    },
+  },
   install = { colorscheme = { "habamax" } },
   checker = { enabled = true, notify = false },
   change_detection = { enabled = false, notify = false },
