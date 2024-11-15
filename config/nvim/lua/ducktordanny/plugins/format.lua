@@ -6,7 +6,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     opts = {},
     config = function()
-      require "ducktordanny.custom.plugins.conform"
+      require "ducktordanny.plugins.custom.conform"
     end,
   },
 }

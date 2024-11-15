@@ -6,6 +6,6 @@ return {
     "nvim-lua/plenary.nvim",
   },
   config = function()
-    require "ducktordanny.custom.plugins.harpoon"
+    require "ducktordanny.plugins.custom.harpoon"
   end,
 }

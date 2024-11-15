@@ -26,7 +26,7 @@ return {
       "folke/neodev.nvim",
     },
     config = function()
-      require "ducktordanny.custom.plugins.lsp"
+      require "ducktordanny.plugins.custom.lsp"
     end,
   },
 }

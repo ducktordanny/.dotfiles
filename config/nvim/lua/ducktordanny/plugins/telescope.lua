@@ -5,7 +5,7 @@ return {
     version = "*",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require "ducktordanny.custom.plugins.telescope"
+      require "ducktordanny.plugins.custom.telescope"
     end,
   },
   {

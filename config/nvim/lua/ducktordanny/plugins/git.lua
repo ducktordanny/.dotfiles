@@ -2,7 +2,7 @@ return {
   {
     "tpope/vim-fugitive",
     config = function()
-      require "ducktordanny.custom.plugins.fugitive"
+      require "ducktordanny.plugins.custom.fugitive"
     end,
   },
   {
@@ -24,7 +24,7 @@ return {
     },
     config = function()
       require("gitsigns").setup()
-      require "ducktordanny.custom.plugins.gitsigns"
+      require "ducktordanny.plugins.custom.gitsigns"
     end,
   },
 }
