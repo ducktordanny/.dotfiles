@@ -72,9 +72,11 @@ M.restore_by_cwd = function()
   local cwd = vim.fn.getcwd()
   local restore_data = config[cwd]
   if not restore_data then
+    vim.cmd("e .")
     return
   end
   if not restore_data.file then
+    vim.cmd("e .")
     return
   end
   vim.cmd("e " .. restore_data.file)
