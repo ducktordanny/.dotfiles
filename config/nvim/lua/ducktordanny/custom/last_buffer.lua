@@ -80,6 +80,7 @@ M.restore_by_cwd = function()
     return
   end
   vim.cmd("e " .. restore_data.file)
+  vim.cmd("e")
   if not restore_data.cursor_position then
     return
   end
