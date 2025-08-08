@@ -1,17 +1,20 @@
 local M = {}
 
---- @param is_amend boolean
---- @param no_edit boolean
---- @return function void
-M.commit_handler = function(is_amend, no_edit)
-  return function()
-    if is_amend and no_edit then
-      vim.cmd "botright split"
-      vim.cmd "term git commit --amend --no-edit"
-      vim.cmd "autocmd TermClose <buffer> call FugitiveDidChange()"
-      return
-    end
+--- Runs the `commit --amend --no-edit` command in `:term` which formats the output (e.g. in case of pre-commit,
+--- post-commit hooks), and in case of errors it is easier to go through the issue.
+M.commit_amend_no_edit = function()
+  vim.cmd "botright split"
+  vim.cmd "term git commit --amend --no-edit"
+  vim.cmd "autocmd TermClose <buffer> call FugitiveDidChange()"
+end
 
+--- Opens bottom split for commit message with previous message content of the workspace. After edit, it runs the
+--- commit command in `:term` which formats the output (e.g. in case of pre-commit, post-commit hooks), and in case
+--- of errors it is easier to go through the issue.
+--- @param amend? boolean
+--- @return function void
+M.commit_handler = function(amend)
+  return function()
     local cwd = vim.loop.cwd()
     if cwd == nil then
       vim.notify("Could not read cwd.", vim.log.levels.ERROR)
@@ -20,7 +23,7 @@ M.commit_handler = function(is_amend, no_edit)
     local cwd_hash = vim.fn.sha256(cwd)
     local commit_path = vim.fn.expand(("~/.config/.dotfiles/tmp/%s_COMMIT_EDITMSG"):format(cwd_hash))
 
-    if is_amend then
+    if amend then
       vim.fn.system(("git log -1 --pretty=%%B > %s"):format(vim.fn.shellescape(commit_path)))
     end
 
@@ -34,7 +37,7 @@ M.commit_handler = function(is_amend, no_edit)
         vim.schedule(function()
           vim.cmd "botright split"
           local git_command = ("git commit -F %s"):format(vim.fn.shellescape(commit_path))
-          if is_amend then
+          if amend then
             git_command = git_command .. " --amend"
           end
           vim.cmd("term " .. git_command)
@@ -46,11 +49,9 @@ M.commit_handler = function(is_amend, no_edit)
   end
 end
 
-vim.keymap.set("n", "<leader>cc", M.commit_handler(false, false), { desc = "Git [C]ommit [c]urrently staged files" })
-vim.keymap.set("n", "<leader>cca", M.commit_handler(true, false),
-  { desc = "Git [C]ommit [c]urrently staged files with [a]mend" })
-vim.keymap.set("n", "<leader>cce", M.commit_handler(true, true),
-  { desc = "Git [C]ommit [c]urrently staged files with amend no [e]dit" })
+vim.keymap.set("n", "<leader>gc", M.commit_handler(), { desc = "[G]it [c]ommit" })
+vim.keymap.set("n", "<leader>gca", M.commit_handler(true), { desc = "[G]it [c]ommit [a]mend" })
+vim.keymap.set("n", "<leader>gce", M.commit_amend_no_edit, { desc = "[G]it [c]ommit amend no [e]dit" })
 
 vim.keymap.set("n", "<leader>gp", function()
   vim.cmd "botright split"
