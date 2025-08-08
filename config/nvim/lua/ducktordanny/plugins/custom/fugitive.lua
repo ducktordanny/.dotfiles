@@ -1,21 +1,49 @@
-vim.keymap.set("n", "<leader>cc", function()
-  local cwd = vim.loop.cwd()
-  local workspace_name = vim.fs.basename(cwd)
-  local commit_path = vim.fn.expand(("~/.config/.dotfiles/tmp/%s_COMMIT_EDITMSG"):format(workspace_name))
-  vim.cmd "split"
-  vim.cmd.edit(commit_path)
+local M = {}
 
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    buffer = vim.api.nvim_get_current_buf(),
-    once = true,
-    callback = function()
+--- @param is_amend boolean
+--- @param no_edit boolean
+--- @return function void
+M.commit_handler = function(is_amend, no_edit)
+  return function()
+    if is_amend and no_edit then
       vim.cmd "botright split"
-      vim.cmd(("term git commit -F %s"):format(vim.fn.shellescape(commit_path)))
-      -- TODO: Focus the newly created split
-      -- But it isn't that simple, because autocmd messes up things... :(
-    end,
-  })
-end, { desc = "Git [C]ommit [c]urrently staged files" })
+      vim.cmd "term git commit --amend --no-edit"
+      vim.cmd "autocmd TermClose <buffer> call FugitiveDidChange()"
+      return
+    end
+
+    local cwd = vim.loop.cwd()
+    local workspace_name = vim.fs.basename(cwd)
+    local commit_path = vim.fn.expand(("~/.config/.dotfiles/tmp/%s_COMMIT_EDITMSG"):format(workspace_name))
+
+    if is_amend then
+      vim.fn.system(("git log -1 --pretty=%%B > %s"):format(vim.fn.shellescape(commit_path)))
+    end
+
+    vim.cmd "split"
+    vim.cmd.edit(commit_path)
+
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      buffer = vim.api.nvim_get_current_buf(),
+      once = true,
+      callback = function()
+        vim.cmd "botright split"
+        local git_command = ("term git commit -F %s"):format(vim.fn.shellescape(commit_path))
+        if is_amend then
+          git_command = git_command .. " --amend"
+        end
+        vim.cmd(git_command)
+        -- TODO: Focus the newly created split. But it isn't that simple, because autocmd messes up things... :(
+      end,
+    })
+  end
+end
+
+vim.keymap.set("n", "<leader>cc", M.commit_handler(false, false), { desc = "Git [C]ommit [c]urrently staged files" })
+vim.keymap.set("n", "<leader>cca", M.commit_handler(true, false),
+  { desc = "Git [C]ommit [c]urrently staged files with [a]mend" })
+vim.keymap.set("n", "<leader>cce", M.commit_handler(true, true),
+  { desc = "Git [C]ommit [c]urrently staged files with amend no [e]dit" })
 
 vim.keymap.set("n", "<leader>gp", function()
   vim.cmd "botright split"
