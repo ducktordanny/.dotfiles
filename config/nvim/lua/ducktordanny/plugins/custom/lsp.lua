@@ -96,7 +96,7 @@ local mason_lspconfig = require "mason-lspconfig"
 -- TODO: `eslint` version fixed due to regression, remove after fix.
 -- Info found [here](https://www.reddit.com/r/neovim/comments/1cp8cvw/comment/l3nt2an/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
 mason_lspconfig.setup {
-  ensure_installed = vim.tbl_extend("keep", { "eslint@4.8.0" }, vim.tbl_keys(servers)),
+  ensure_installed = vim.tbl_extend("keep", {}, vim.tbl_keys(servers)),
 }
 
 vim.diagnostic.config {
