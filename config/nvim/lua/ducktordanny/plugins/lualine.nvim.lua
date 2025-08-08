@@ -8,6 +8,7 @@ return {
       theme = "rose-pine",
       component_separators = { left = "", right = "|" },
       section_separators = "",
+      globalstatus = true,
     },
     sections = {
       lualine_b = {
