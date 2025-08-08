@@ -13,8 +13,11 @@ M.commit_handler = function(is_amend, no_edit)
     end
 
     local cwd = vim.loop.cwd()
-    local workspace_name = vim.fs.basename(cwd)
-    local commit_path = vim.fn.expand(("~/.config/.dotfiles/tmp/%s_COMMIT_EDITMSG"):format(workspace_name))
+    if cwd == nil then
+      return
+    end
+    local cwd_hash = vim.fn.sha256(cwd)
+    local commit_path = vim.fn.expand(("~/.config/.dotfiles/tmp/%s_COMMIT_EDITMSG"):format(cwd_hash))
 
     if is_amend then
       vim.fn.system(("git log -1 --pretty=%%B > %s"):format(vim.fn.shellescape(commit_path)))
