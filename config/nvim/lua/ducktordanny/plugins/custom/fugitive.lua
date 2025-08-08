@@ -14,6 +14,7 @@ M.commit_handler = function(is_amend, no_edit)
 
     local cwd = vim.loop.cwd()
     if cwd == nil then
+      vim.notify("Could not read cwd.", vim.log.levels.ERROR)
       return
     end
     local cwd_hash = vim.fn.sha256(cwd)
