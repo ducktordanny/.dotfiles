@@ -17,7 +17,6 @@
   "neodev.nvim": { "branch": "main", "commit": "46aa467dca16cf3dfe27098042402066d2ae242d" },
   "nvim-autopairs": { "branch": "master", "commit": "78a4507bb9ffc9b00f11ae0ac48243d00cb9194d" },
   "nvim-cmp": { "branch": "main", "commit": "7e348da6e5085ac447144a2ef4b637220ba27209" },
-  "nvim-coverage": { "branch": "main", "commit": "aa4b4400588e2259e87e372b1e4e90ae13cf5a39" },
   "nvim-lspconfig": { "branch": "feat/nx-support-for-angularls", "commit": "555b6807fc4b922d627a15fa9f7c042d0b1e4e5d" },
   "nvim-surround": { "branch": "main", "commit": "ec2dc7671067e0086cdf29c2f5df2dd909d5f71f" },
   "nvim-treesitter": { "branch": "master", "commit": "a6b2f4ecc8a47011868632142a9b687d7e0f9aaf" },
