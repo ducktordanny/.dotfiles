@@ -27,13 +27,16 @@ M.commit_handler = function(is_amend, no_edit)
       buffer = vim.api.nvim_get_current_buf(),
       once = true,
       callback = function()
-        vim.cmd "botright split"
-        local git_command = ("term git commit -F %s"):format(vim.fn.shellescape(commit_path))
-        if is_amend then
-          git_command = git_command .. " --amend"
-        end
-        vim.cmd(git_command)
-        -- TODO: Focus the newly created split. But it isn't that simple, because autocmd messes up things... :(
+        vim.schedule(function()
+          vim.cmd "botright split"
+          local git_command = ("git commit -F %s"):format(vim.fn.shellescape(commit_path))
+          if is_amend then
+            git_command = git_command .. " --amend"
+          end
+          vim.cmd("term " .. git_command)
+          vim.cmd "startinsert"
+          vim.cmd "autocmd TermClose <buffer> call FugitiveDidChange()"
+        end)
       end,
     })
   end
