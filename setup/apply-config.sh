@@ -16,7 +16,7 @@ for folder in "${folders[@]}"; do
     cp -r ~/.config/.dotfiles/config/$folder ~/.config/$folder
 done
 
-# tmux source ~/.config/tmux/tmux.conf
+tmux source ~/.config/tmux/tmux.conf
 # yabai --restart-service
 # skhd --restart-service
 # sketchybar --reload

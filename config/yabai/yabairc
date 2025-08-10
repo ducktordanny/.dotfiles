@@ -6,17 +6,17 @@ yabai -m config window_placement second_child
 
 # paddings
 
-yabai -m config top_padding 4
-yabai -m config bottom_padding 4
-yabai -m config left_padding 4
-yabai -m config right_padding 4
-yabai -m config window_gap 4
+yabai -m config top_padding 6
+yabai -m config bottom_padding 6
+yabai -m config left_padding 6
+yabai -m config right_padding 6
+yabai -m config window_gap 6
 
 # mouse settings
 yabai -m mouse_drop_action swap
 
 # sketchybar
-yabai -m config external_bar all:36:0
+# yabai -m config external_bar all:36:0
 
 # disable these apps
 yabai -m rule --add app="^System Settings$" manage=off
