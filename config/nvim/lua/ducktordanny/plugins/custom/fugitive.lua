@@ -6,6 +6,7 @@ M.commit_amend_no_edit = function()
   vim.cmd "botright split"
   vim.cmd "term git commit --amend --no-edit"
   vim.cmd "autocmd TermClose <buffer> call FugitiveDidChange()"
+  vim.cmd "startinsert"
 end
 
 --- Opens bottom split for commit message with previous message content of the workspace. After edit, it runs the
