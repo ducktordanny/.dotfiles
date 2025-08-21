@@ -9,7 +9,13 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+  nmap("<leader>rn", function()
+    local cword = vim.fn.expand "<cword>"
+    local new_name = vim.fn.input("Rename to: ", cword)
+    if new_name and #new_name > 0 and new_name ~= cword then
+      vim.lsp.buf.rename(new_name) -- name is provided -> no more extra prompts
+    end
+  end, "[R]e[n]ame")
   nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
   nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
