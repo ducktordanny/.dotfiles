@@ -15,17 +15,17 @@ local filetypes = {
 local formatters_by_ft = {
   lua = { "stylua" },
   python = { "isort", "black" },
-  javascript = { "prettier" },
-  typescript = { "prettier" },
-  javascriptreact = { "prettier" },
-  typescriptreact = { "prettier" },
-  svelte = { "prettier" },
-  css = { "prettier" },
-  scss = { "prettier" },
-  html = { "prettier" },
-  json = { "prettier" },
-  yaml = { "prettier" },
-  markdown = { "prettier" },
+  javascript = { "prettier", "prettierd" },
+  typescript = { "prettier", "prettierd" },
+  javascriptreact = { "prettier", "prettierd" },
+  typescriptreact = { "prettier", "prettierd" },
+  svelte = { "prettier", "prettierd" },
+  css = { "prettier", "prettierd" },
+  scss = { "prettier", "prettierd" },
+  html = { "prettier", "prettierd" },
+  json = { "prettier", "prettierd" },
+  yaml = { "prettier", "prettierd" },
+  markdown = { "prettier", "prettierd" },
   go = { "gofmt" },
 }
 local format_config = {
@@ -47,12 +47,13 @@ conform.setup {
   format_on_save = format_config,
 }
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function(args)
-    conform.format { bufnr = args.buf }
-  end,
-})
+-- TODO: Might be not needed actually
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*",
+--   callback = function(args)
+--     conform.format { bufnr = args.buf }
+--   end,
+-- })
 
 vim.keymap.set({ "n", "v" }, "<leader>ff", function()
   conform.format(format_config)
