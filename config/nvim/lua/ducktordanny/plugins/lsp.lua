@@ -11,8 +11,7 @@ return {
     build = "make install_jsregexp",
   },
   {
-    "ducktordanny/nvim-lspconfig",
-    branch = "feat/nx-support-for-angularls",
+    "neovim/nvim-lspconfig",
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",

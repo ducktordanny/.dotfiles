@@ -23,6 +23,7 @@ local formatters_by_ft = {
   css = { "prettier", "prettierd" },
   scss = { "prettier", "prettierd" },
   html = { "prettier", "prettierd" },
+  htmlangular = { "prettier" },
   json = { "prettier", "prettierd" },
   yaml = { "prettier", "prettierd" },
   markdown = { "prettier", "prettierd" },
