@@ -31,11 +31,6 @@ local on_attach = function(_, bufnr)
 
   -- Lesser used LSP functionality
   nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-  nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-  nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-  nmap("<leader>wl", function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, "[W]orkspace [L]ist Folders")
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
@@ -46,18 +41,21 @@ end
 -- NOTE: Node should be installed on system for most of these LSPs
 local servers = {
   lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-      diagnostics = {
-        globals = { "vim" },
+    settings = {
+      Lua = {
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+        diagnostics = {
+          globals = { "vim" },
+        },
       },
-    },
+    }
   },
-  tailwindcss = {},
-  angularls = {},
+  angularls = {
+    filetypes = { "typescript", "html", "htmlangular" },
+  },
+  ts_ls = {},
   cssls = {},
-  cssmodules_ls = {},
   eslint = {
     filetypes = {
       "javascript",
@@ -66,19 +64,13 @@ local servers = {
       "typescript",
       "typescriptreact",
       "typescript.tsx",
-      "vue",
       "svelte",
       "astro",
       "html",
+      "vue",
     },
   },
-  html = {},
   jsonls = {},
-  jdtls = {},
-  omnisharp = {},
-  css_variables = {},
-  somesass_ls = {},
-  yamlls = {},
   gopls = {},
 }
 
@@ -104,22 +96,25 @@ mason_lspconfig.setup {
 }
 
 vim.diagnostic.config {
+  virtual_text = { spacing = 1, prefix = "●" },
+  update_in_insert = false,
+  severity_sort = true,
   float = { border = "rounded" },
-  virtual_text = { current_line = true },
 }
 vim.o.winborder = "rounded"
 
-for server_name, settings in pairs(servers or {}) do
-  require("lspconfig")[server_name].setup {
+for server_name, server_options in pairs(servers or {}) do
+  local common_options = {
     capabilities = capabilities,
     on_attach = on_attach,
-    settings = servers[server_name],
-    handlers = {},
+    flags = { debounce_text_changes = 150 },
   }
+  local options = vim.tbl_deep_extend("force", common_options, server_options);
+  vim.lsp.config(server_name, options)
+  vim.lsp.enable(server_name)
 end
 
 -- nvim-cmp setup
-
 local cmp = require "cmp"
 local luasnip = require "luasnip"
 require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets", "./.work-snippets" } }
