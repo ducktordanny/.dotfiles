@@ -22,7 +22,6 @@ return {
       { "j-hui/fidget.nvim", opts = {}, tag = "legacy" },
 
       -- Additional lua configuration, makes nvim stuff amazing!
-      "folke/neodev.nvim",
     },
     config = function()
       require "ducktordanny.plugins.custom.lsp"
