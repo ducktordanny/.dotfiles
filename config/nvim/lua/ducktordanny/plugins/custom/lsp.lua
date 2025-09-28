@@ -51,9 +51,7 @@ local servers = {
       },
     }
   },
-  angularls = {
-    filetypes = { "typescript", "html", "htmlangular" },
-  },
+  angularls = {},
   ts_ls = {},
   cssls = {},
   eslint = {
