@@ -1,6 +1,6 @@
 local M = {}
 
-M.on_attach = function(_, bufnr)
+M.on_attach = function(client, bufnr)
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
@@ -38,6 +38,20 @@ M.on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
     vim.lsp.buf.format()
   end, { desc = "Format current buffer with LSP" })
+
+  if client.name == 'eslint' then
+    vim.api.nvim_buf_create_user_command(0, 'LspEslintFixAll', function()
+      client:request_sync('workspace/executeCommand', {
+        command = 'eslint.applyAllFixes',
+        arguments = {
+          {
+            uri = vim.uri_from_bufnr(bufnr),
+            version = vim.lsp.util.buf_versions[bufnr],
+          },
+        },
+      }, nil, bufnr)
+    end, {})
+  end
 end
 
 return M
