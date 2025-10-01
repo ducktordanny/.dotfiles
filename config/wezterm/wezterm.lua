@@ -5,7 +5,7 @@ local config = wezterm.config_builder()
 local dimmer = { brightness = 0.025 }
 config.background = {
   {
-    source = { File = wezterm.home_dir .. "/.config/.dotfiles/assets/cat-gang.jpeg" },
+    source = { File = wezterm.home_dir .. "/.config/.dotfiles/assets/cat-in-rain.wallpaper.jpg" },
     repeat_x = "NoRepeat",
     repeat_y = "NoRepeat",
     hsb = dimmer,
