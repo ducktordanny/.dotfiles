@@ -13,7 +13,7 @@ config.background = {
     horizontal_align = "Center",
   },
 }
-local border_color = "#3f4f3f"
+local border_color = "#7f999b"
 config.window_frame = {
   border_left_width = "0.5cell",
   border_right_width = "0.5cell",
