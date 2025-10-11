@@ -2,6 +2,7 @@ local telescope = require "telescope"
 local actions = require "telescope.actions"
 local builtin = require "telescope.builtin"
 local utils = require "telescope.utils"
+local live_multigrep = require "ducktordanny.plugins.custom.telescope-multigrep".live_multigrep
 
 local telescope_mappings = {
   ["<C-u>"] = false,
@@ -24,25 +25,26 @@ telescope.setup {
 }
 vim.cmd [[autocmd! ColorScheme * highlight TelescopeBorder guifg=white guibg=NONE]]
 
-require("telescope").load_extension("ui-select")
+telescope.load_extension("ui-select")
 
-local findFiles = function()
+local find_files = function()
   builtin.find_files { hidden = true }
 end
-local findDir = function()
+local find_dir = function()
   builtin.find_files { find_command = { "fd", "--type", "d" }, prompt_title = "Find Directories" }
 end
-local findInCwd = function()
+local find_in_cwd = function()
   builtin.find_files { cwd = utils.buffer_dir(), hidden = true }
 end
 
 -- See `:help telescope.builtin`
 vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
-vim.keymap.set("n", "<leader>sf", findFiles, { desc = "[S]earch [F]iles" })
-vim.keymap.set("n", "<leader>sl", findDir, { desc = "[S]earch Dirs" })
+vim.keymap.set("n", "<leader>sf", find_files, { desc = "[S]earch [F]iles" })
+vim.keymap.set("n", "<leader>sl", find_dir, { desc = "[S]earch Dirs" })
 vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 vim.keymap.set("n", "<leader>so", builtin.oldfiles, { desc = "[S]earch [O]ldfiles" })
-vim.keymap.set("n", "<leader>ss", findInCwd, { desc = "[S]earch current buffer's directory" })
+vim.keymap.set("n", "<leader>ss", find_in_cwd, { desc = "[S]earch current buffer's directory" })
 vim.keymap.set("n", "<leader>sj", builtin.git_branches, { desc = "Search git branches" })
+vim.keymap.set("n", "<leader>sg", live_multigrep, { desc = "Multi Grep, double space adds filename filtering" })
