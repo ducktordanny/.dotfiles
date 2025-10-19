@@ -6,7 +6,7 @@ vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Greates remap ever (according to ThePrimeagen)
+-- Greatest remap ever (according to ThePrimeagen)
 vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
   desc = "Replace word that we are on",
@@ -74,3 +74,23 @@ vim.api.nvim_create_user_command("ApplyDotfilesConfigs", apply_dotfiles_config, 
 -- Insert line and stay in normal mode
 vim.keymap.set("n", "<leader>o", "o<Esc>")
 vim.keymap.set("n", "<leader>O", "O<Esc>")
+
+-- Toggle relative numbers (as it can be confusing for others for first sight, if I share my screen or sth)
+local is_relative = vim.wo.relativenumber
+vim.keymap.set("n", "<leader>rj", function()
+  is_relative = not is_relative
+  vim.o.relativenumber = is_relative
+  -- Change for other open windows, too
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    vim.wo[win].relativenumber = is_relative
+  end
+end, { desc = "Toggle relativenumbers" })
+
+-- Make sure the correct state is loaded (older buffers may stuck to previous state without this)
+vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter", "TermOpen" }, {
+  group = vim.api.nvim_create_augroup("ForceRelativeNumbers", { clear = true }),
+  callback = function(_)
+    local win = vim.api.nvim_get_current_win()
+    vim.wo[win].relativenumber = is_relative
+  end,
+})
