@@ -1,7 +1,26 @@
 return {
   {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
+    opts = function(_, opts)
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, {
+        name = "lazydev",
+        group_index = 0,
+      })
+      opts.library = {
+        "~/.config/.dotfiles"
+      }
+    end
   },
   {
     "L3MON4D3/LuaSnip",
