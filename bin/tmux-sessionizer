@@ -3,7 +3,22 @@
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(find ~/Developer ~/work ~/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf)
+  selected=$(find ~/Developer ~/work ~/personal ~/.config -mindepth 1 -maxdepth 1 -type d \
+    | fzf --bind 'change:first' --ansi --preview '
+      git_branch=$(git -C {} branch --show 2>/dev/null)
+      if [ -n "$git_branch" ]; then
+        printf "\033[1;36m🌳 Branch:\033[0m \033[1;32m%s\033[0m\n" "$git_branch"
+        echo "\n---\n\n📋 Status:\n"
+        git_status=$(git -c color.status=always -C {} status -s)
+        [ -n "$git_status" ] && echo $git_status || echo "✅ Clean, nothing to see here..." 
+        echo "\n---\n\n🪵 Log:\n"
+        git -C {} log --graph --oneline --max-count 25 --color=always
+        echo "\n... Top 25 shown"
+      else
+        echo "---\n\n😧 No git repo here, nothing to show... 😭\n\n---"
+      fi
+    '
+  )
 fi
 
 if [[ -z $selected ]]; then
