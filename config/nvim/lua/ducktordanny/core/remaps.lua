@@ -2,6 +2,10 @@
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "x", '"_x')
 
+-- Tabs
+vim.keymap.set("n", "<leader>t", ":tabnew .<cr>", { desc = "Create new tab to cwd" })
+vim.keymap.set("n", "<leader>tt", ":tabnew %<cr>", { desc = "Create new tab with current buffer" })
+
 -- Move around stuff here:
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
