@@ -1,5 +1,3 @@
-local worktree = require "ducktordanny.custom.worktree"
-
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -9,10 +7,18 @@ return {
       component_separators = { left = "", right = "|" },
       section_separators = "",
       globalstatus = true,
+      fmt = string.lower,
     },
     sections = {
+      lualine_a = {
+        {
+          "mode",
+          fmt = function(str)
+            return str:sub(1, 1)
+          end,
+        },
+      },
       lualine_b = {
-        worktree.get_current_worktree,
         "branch",
         "diff",
         {
@@ -31,6 +37,7 @@ return {
           },
         },
       },
+      lualine_x = { "filetype" },
     },
   },
 }
