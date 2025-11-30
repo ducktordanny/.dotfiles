@@ -4,7 +4,7 @@ return {
     require("ts-error-translator").setup {
       auto_attach = true,
       servers = {
-        "ts_ls",
+        "typescript-tools",
       },
     }
   end,

@@ -9,10 +9,9 @@ local servers = {
           globals = { "vim" },
         },
       },
-    }
+    },
   },
   angularls = {},
-  ts_ls = {},
   cssls = {},
   eslint = {
     filetypes = {
