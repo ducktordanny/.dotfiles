@@ -30,6 +30,8 @@ local servers = {
   jsonls = {},
   gopls = {},
   typos_lsp = {},
+  stylelint = {},
+  stylelint_lsp = {},
 }
 
 return servers
