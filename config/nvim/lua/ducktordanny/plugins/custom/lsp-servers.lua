@@ -25,6 +25,7 @@ local servers = {
       "astro",
       "html",
       "vue",
+      "scss",
     },
   },
   jsonls = {},
