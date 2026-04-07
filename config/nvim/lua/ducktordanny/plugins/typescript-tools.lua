@@ -9,7 +9,7 @@ return {
     require("typescript-tools").setup {
       settings = {
         -- Performance: separate diagnostic server for large projects
-        separate_diagnostic_server = true,
+        separate_diagnostic_server = false,
         -- When to publish diagnostics
         publish_diagnostic_on = "insert_leave",
         -- JSX auto-closing tags

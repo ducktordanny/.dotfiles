@@ -41,12 +41,11 @@ M.on_attach = function(client, bufnr)
 
   if client.name == "eslint" then
     vim.api.nvim_buf_create_user_command(0, "LspEslintFixAll", function()
-      client:request_sync("workspace/executeCommand", {
+      client.request_sync("workspace/executeCommand", {
         command = "eslint.applyAllFixes",
         arguments = {
           {
             uri = vim.uri_from_bufnr(bufnr),
-            version = vim.lsp.util.buf_versions[bufnr],
           },
         },
       }, nil, bufnr)

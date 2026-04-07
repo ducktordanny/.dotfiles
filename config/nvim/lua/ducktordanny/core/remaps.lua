@@ -51,6 +51,10 @@ vim.keymap.set("n", "<leader>d", '"_d', { desc = "Black hole delete (no save to 
 vim.keymap.set("n", "<leader>j", "<cmd>cnext<cr>", { desc = "Jump to next quick fix list item" })
 vim.keymap.set("n", "<leader>k", "<cmd>cprev<cr>", { desc = "Jump to previous quick fix list item" })
 
+-- LSP restart
+vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>", { desc = "LSP: Restart" })
+vim.keymap.set("n", "<leader>lR", "<cmd>TSToolsRestartServer<cr>", { desc = "TSTools: Restart server" })
+
 -- Fun
 vim.keymap.set("n", "<leader>ll", "<cmd>!fortune | cowsay -f tux<cr>", { desc = "Cowsay a fortune" })
 

@@ -16,7 +16,7 @@ end
 --- @return function void
 M.commit_handler = function(amend)
   return function()
-    local cwd = vim.loop.cwd()
+    local cwd = vim.uv.cwd()
     if cwd == nil then
       vim.notify("Could not read cwd.", vim.log.levels.ERROR)
       return

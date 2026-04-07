@@ -1,3 +1,10 @@
-local worktree = require "ducktordanny.custom.worktree"
-
-vim.keymap.set("n", "<leader>si", worktree.select_worktree_dropdown, { desc = "Select work tree" })
+-- Set filetype to htmlangular for HTML files inside Angular projects.
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.html",
+  group = vim.api.nvim_create_augroup("AngularFiletype", { clear = true }),
+  callback = function()
+    if vim.fs.root(0, { "angular.json", "nx.json" }) then
+      vim.bo.filetype = "htmlangular"
+    end
+  end,
+})

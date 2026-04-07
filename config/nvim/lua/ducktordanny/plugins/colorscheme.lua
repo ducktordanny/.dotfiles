@@ -16,8 +16,8 @@ return {
       vim.api.nvim_create_autocmd("ColorScheme", {
         pattern = "*",
         callback = function()
-          vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = White })
-          vim.api.nvim_set_hl(0, "FloatBorder", { fg = White })
+          vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#ffffff" })
+          vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#ffffff" })
           vim.api.nvim_set_hl(0, "IlluminatedWordText", { bold = true })
           vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bold = true })
           vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bold = true })
