@@ -29,7 +29,6 @@ vim.o.winborder = "rounded"
 for server_name, server_options in pairs(servers or {}) do
   local common_options = {
     capabilities = capabilities,
-    on_attach = require("ducktordanny.plugins.custom.lsp-attach-remaps").on_attach,
     flags = { debounce_text_changes = 150 },
   }
   local options = vim.tbl_deep_extend("force", common_options, server_options);
@@ -37,4 +36,5 @@ for server_name, server_options in pairs(servers or {}) do
   vim.lsp.enable(server_name)
 end
 
+require "ducktordanny.plugins.custom.lsp-attach-remaps"
 require "ducktordanny.plugins.custom.cmp"

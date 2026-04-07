@@ -25,13 +25,11 @@ local servers = {
       "astro",
       "html",
       "vue",
-      "scss",
     },
   },
   jsonls = {},
   gopls = {},
   typos_lsp = {},
-  stylelint = {},
   stylelint_lsp = {},
 }
 

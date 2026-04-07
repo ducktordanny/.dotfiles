@@ -1,6 +1,6 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
-require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets", "./.work-snippets" } }
+require("luasnip.loaders.from_vscode").lazy_load { paths = { vim.fn.stdpath("config") .. "/snippets", vim.fn.stdpath("config") .. "/.work-snippets" } }
 luasnip.config.setup {}
 
 cmp.setup {
@@ -43,6 +43,7 @@ cmp.setup {
     end, { "i", "s" }),
   },
   sources = {
+    { name = "lazydev", group_index = 0 },
     { name = "nvim_lsp" },
     { name = "luasnip" },
   },
