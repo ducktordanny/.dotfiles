@@ -1,22 +1,22 @@
 return {
-  "pmizio/typescript-tools.nvim",
-  lazy = false,
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "neovim/nvim-lspconfig",
-  },
-  config = function()
-    require("typescript-tools").setup {
+  {
+    "pmizio/typescript-tools.nvim",
+    ft = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    opts = {
       settings = {
-        -- Performance: separate diagnostic server for large projects
         separate_diagnostic_server = false,
-        -- When to publish diagnostics
         publish_diagnostic_on = "insert_leave",
-        -- JSX auto-closing tags
-        -- jsx_close_tag = {
-        --   enable = true,
-        --   filetypes = { "javascriptreact", "typescriptreact" },
-        -- },
         tsserver_file_preferences = {
           includeInlayParameterNameHints = "all",
           includeInlayParameterNameHintsWhenArgumentMatchesName = true,
@@ -27,7 +27,6 @@ return {
           includeInlayEnumMemberValueHints = true,
           includeInlayFunctionLikeReturnTypeHints = true,
         },
-
         tsserver_format_options = {
           insertSpaceAfterOpeningAndBeforeClosingEmptyBraces = true,
           semicolons = "insert",
@@ -38,9 +37,25 @@ return {
         disable_member_code_lens = true,
         tsserver_max_memory = 12288,
       },
-    }
-  end,
-  keys = {
-    { "<leader>ri", "<cmd>TSToolsRemoveUnusedImports<cr>", desc = "TSTools: [R]emove Unused [I]mports" },
+    },
+    keys = {
+      { "<leader>ri", "<cmd>TSToolsRemoveUnusedImports<cr>", desc = "TSTools: Remove unused imports" },
+      { "<leader>rA", "<cmd>TSToolsAddMissingImports<cr>", desc = "TSTools: Add missing imports" },
+      { "<leader>rO", "<cmd>TSToolsOrganizeImports<cr>", desc = "TSTools: Organize imports" },
+    },
+  },
+
+  -- Translates cryptic TS diagnostics into human-readable explanations.
+  {
+    "dmmulroy/ts-error-translator.nvim",
+    ft = {
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+    },
+    opts = {
+      auto_attach = true,
+    },
   },
 }

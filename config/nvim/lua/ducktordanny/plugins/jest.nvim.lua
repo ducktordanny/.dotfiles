@@ -1,3 +1,0 @@
-return {
-  "ducktordanny/jest.nvim",
-}
