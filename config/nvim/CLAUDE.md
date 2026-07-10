@@ -32,7 +32,7 @@ snippets/                           # LuaSnip snippet files (html, js, ts, json)
 
 - **Leader:** `<Space>`, **LocalLeader:** `\`
 - **Theme:** Rose Pine moon variant with transparent background
-- **TypeScript LSP:** `typescript-tools.nvim` (not built-in tsserver) — 12GB max memory, inlay hints on, diagnostics on `insert_leave`
+- **TypeScript LSP:** `typescript-tools.nvim` (not built-in tsserver) — 12GB max memory, inlay hints off by default (toggle with `<leader>th`), diagnostics on `insert_leave`
 - **Formatter:** Conform + Prettier (format after save, async). Prettier for web, Stylua for Lua, gofmt for Go, black+isort for Python
 - **File navigation:** Harpoon v2 (5 slots) + Oil for browsing, Neo-tree as tree explorer
 - **Git worktrees:** Used via tmux (separate nvim instance per worktree)
@@ -54,7 +54,7 @@ LSP config lives entirely in `plugins/lsp.lua` and uses the Neovim 0.11 `vim.lsp
 **Servers managed via Mason:** `lua_ls`, `angularls`, `cssls`, `eslint`, `jsonls`, `gopls`, `typos_lsp`, `stylelint_lsp`.
 TypeScript/JS is handled separately by `typescript-tools.nvim`.
 
-**LspAttach handler:** single autocmd in `plugins/lsp.lua`. Registers buffer-local keymaps, enables inlay hints (if supported), sets up document highlight on CursorHold, and per-client extras (`eslint` auto-fix on save, `angularls` `gdc` CSS jumper).
+**LspAttach handler:** single autocmd in `plugins/lsp.lua`. Registers buffer-local keymaps, sets up document highlight on CursorHold, and per-client extras (`eslint` auto-fix on save, `angularls` `gdc` CSS jumper). Inlay hints are off by default; `<leader>th` toggles them per-buffer.
 
 ## Important Keymaps
 

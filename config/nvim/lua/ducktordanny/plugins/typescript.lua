@@ -46,16 +46,16 @@ return {
   },
 
   -- Translates cryptic TS diagnostics into human-readable explanations.
-  {
-    "dmmulroy/ts-error-translator.nvim",
-    ft = {
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact",
-    },
-    opts = {
-      auto_attach = true,
-    },
-  },
+  -- {
+  --   "dmmulroy/ts-error-translator.nvim",
+  --   ft = {
+  --     "javascript",
+  --     "javascriptreact",
+  --     "typescript",
+  --     "typescriptreact",
+  --   },
+  --   opts = {
+  --     auto_attach = true,
+  --   },
+  -- },
 }

@@ -276,7 +276,6 @@ return {
           end, { desc = "Format current buffer with LSP" })
 
           if client:supports_method "textDocument/inlayHint" then
-            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
             map("n", "<leader>th", function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }, { bufnr = bufnr })
             end, "Toggle inlay hints")
