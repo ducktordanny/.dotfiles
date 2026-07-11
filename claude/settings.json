@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "effortLevel": "xhigh",
+  "outputStyle": "Concise",
+  "tui": "fullscreen",
+  "editorMode": "vim",
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true
+  },
+  "cleanupPeriodDays": 365,
+  "permissions": {
+    "allow": [
+      "Bash(rg *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(cd *)",
+      "Bash(find *)",
+      "Bash(wc *)",
+      "Bash(grep *)",
+      "Bash(echo *)",
+      "Bash(npx nx lint *)",
+      "Bash(npx nx test *)",
+      "Bash(npx tsc *)",
+      "Bash(yarn nx lint *)",
+      "Bash(yarn nx test *)",
+      "Bash(npx eslint *)",
+      "Bash(yarn eslint *)",
+      "Bash(yarn stylelint *)",
+      "Bash(npx prettier --check *)",
+      "Bash(yarn prettier --check *)"
+    ],
+    "deny": [
+      "Bash(*chmod*)",
+      "Bash(*exec*)",
+      "Bash(git push *)",
+      "Bash(rm -fr *)",
+      "Bash(rm -rf *)",
+      "Bash(ssh *)",
+      "Bash(sudo *)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(./.git/**)",
+      "Read(~/.ssh/**)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "~/.claude/lib/claude-notify.sh" }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          { "type": "command", "command": "~/.claude/lib/claude-notify.sh" }
+        ]
+      }
+    ]
+  }
+}

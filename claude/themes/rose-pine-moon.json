@@ -1,0 +1,45 @@
+{
+  "name": "Rosé Pine Moon",
+  "base": "dark",
+  "overrides": {
+    "claude": "#c4a7e7",
+    "text": "#e0def4",
+    "inverseText": "#232136",
+    "inactive": "#6e6a86",
+    "subtle": "#56526e",
+    "suggestion": "#9ccfd8",
+    "permission": "#c4a7e7",
+    "remember": "#f6c177",
+
+    "success": "#3e8fb0",
+    "error": "#eb6f92",
+    "warning": "#f6c177",
+    "merged": "#c4a7e7",
+
+    "promptBorder": "#ffffff",
+    "planMode": "#9ccfd8",
+    "autoAccept": "#f6c177",
+    "bashBorder": "#ea9a97",
+    "ide": "#3e8fb0",
+    "fastMode": "#ea9a97",
+
+    "diffAdded": "#28374e",
+    "diffRemoved": "#55344d",
+    "diffAddedDimmed": "#282c40",
+    "diffRemovedDimmed": "#33273d",
+    "diffAddedWord": "#2f526d",
+    "diffRemovedWord": "#7d445f",
+
+    "userMessageBackground": "#2a273f",
+    "userMessageBackgroundHover": "#393552",
+    "messageActionsBackground": "#393552",
+    "bashMessageBackgroundColor": "#2a273f",
+    "memoryBackgroundColor": "#2a283e",
+    "selectionBg": "#44415a",
+
+    "rate_limit_fill": "#c4a7e7",
+    "rate_limit_empty": "#44415a",
+    "briefLabelYou": "#9ccfd8",
+    "briefLabelClaude": "#c4a7e7"
+  }
+}

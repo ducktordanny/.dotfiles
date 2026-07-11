@@ -9,19 +9,13 @@
   },
   "permissions": {
     "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
       "Read(./.git/**)",
-      "Bash(sudo *)",
       "Bash(*exec*)",
       "Bash(git push *)",
       "Bash(rm -rf *)",
       "Bash(rm -fr *)",
       "Bash(*chmod*)",
       "Bash(ssh *)"
-    ],
-    "ask": [
-      "Bash"
     ]
   }
 }
