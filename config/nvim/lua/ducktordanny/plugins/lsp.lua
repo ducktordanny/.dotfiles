@@ -193,12 +193,15 @@ return {
             "svelte",
             "astro",
             "html",
+            "htmlangular",
             "vue",
             "css",
             "scss",
           },
           settings = {
-            workingDirectories = { mode = "auto" },
+            -- Must be a list — a bare `{ mode = "auto" }` serializes as an
+            -- object and the server silently ignores it.
+            workingDirectories = { { mode = "auto" } },
           },
         },
       }

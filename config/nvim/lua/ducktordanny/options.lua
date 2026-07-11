@@ -19,7 +19,7 @@ opt.colorcolumn = "120"
 opt.ignorecase = true
 opt.smartcase = true
 opt.incsearch = true
-opt.hlsearch = false
+opt.hlsearch = true -- cleared with <leader>sn
 
 -- Split behavior
 opt.splitright = true
