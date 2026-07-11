@@ -30,6 +30,7 @@
       "Bash(yarn nx test *)",
       "Bash(npx eslint *)",
       "Bash(yarn eslint *)",
+      "Bash(npx stylelint *)",
       "Bash(yarn stylelint *)",
       "Bash(npx prettier --check *)",
       "Bash(yarn prettier --check *)"
