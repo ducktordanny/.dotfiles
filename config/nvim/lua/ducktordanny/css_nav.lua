@@ -220,10 +220,7 @@ function M.goto_component_class(bufnr)
   end
   local row, col = find_class(lines, class)
   if not row then
-    vim.notify(
-      "Class ." .. class .. " not found in " .. vim.fn.fnamemodify(style_file, ":t"),
-      vim.log.levels.WARN
-    )
+    vim.notify("Class ." .. class .. " not found in " .. vim.fn.fnamemodify(style_file, ":t"), vim.log.levels.WARN)
     return
   end
   vim.cmd("edit " .. vim.fn.fnameescape(style_file))
