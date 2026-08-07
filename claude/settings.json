@@ -18,7 +18,7 @@
     "deny": [
       "Bash(*chmod*)",
       "Bash(*exec*)",
-      "Bash(git *)",
+      "Bash(git push *)",
       "Bash(rm -fr *)",
       "Bash(rm -rf *)",
       "Bash(ssh *)",

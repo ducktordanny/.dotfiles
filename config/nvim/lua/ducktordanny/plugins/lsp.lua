@@ -160,6 +160,7 @@ return {
           },
         },
         typos_lsp = {},
+        tsp_server = {},
         stylelint_lsp = {
           filetypes = { "css", "scss", "less", "sass" },
         },
@@ -193,7 +194,6 @@ return {
             "svelte",
             "astro",
             "html",
-            "htmlangular",
             "vue",
             "css",
             "scss",
@@ -251,7 +251,9 @@ return {
           -- cross-file CSS class refs). Everything else uses LSP references.
           local gr
           if STYLE_FTS[vim.bo[bufnr].filetype] then
-            gr = function() css_nav.find_class_references(bufnr) end
+            gr = function()
+              css_nav.find_class_references(bufnr)
+            end
           elseif ok_telescope then
             gr = tb.lsp_references
           else
@@ -295,7 +297,9 @@ return {
           if client.name == "angularls" then
             -- `gdc`: jump from an HTML class name to the definition in the
             -- co-located Angular component style file.
-            map("n", "gdc", function() css_nav.goto_component_class(bufnr) end, "Goto CSS class definition")
+            map("n", "gdc", function()
+              css_nav.goto_component_class(bufnr)
+            end, "Goto CSS class definition")
           end
         end,
       })
