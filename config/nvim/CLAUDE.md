@@ -51,7 +51,7 @@ LSP config lives entirely in `plugins/lsp.lua` and uses the Neovim 0.11 `vim.lsp
 
 **Why `automatic_enable = false`:** mason-lspconfig 2.x's `automatic_enable` enables **every** installed Mason tool that looks LSP-capable, including `stylua --lsp` (a formatter) and any stale `tailwindcss-language-server` package. That produced random phantom attaches ("Random LSP fixed, dunno..."). We disable it and enable exactly the servers we configured.
 
-**Servers managed via Mason:** `lua_ls`, `angularls`, `cssls`, `eslint`, `jsonls`, `gopls`, `typos_lsp`, `stylelint_lsp`.
+**Servers managed via Mason:** `lua_ls`, `angularls`, `cssls`, `eslint`, `jsonls`, `gopls`, `typos_lsp`, `tsp_server`, `stylelint_lsp`.
 TypeScript/JS is handled separately by `typescript-tools.nvim`.
 
 **LspAttach handler:** single autocmd in `plugins/lsp.lua`. Registers buffer-local keymaps, sets up document highlight on CursorHold, and per-client extras (`eslint` auto-fix on save, `angularls` `gdc` CSS jumper). Inlay hints are off by default; `<leader>th` toggles them per-buffer.
