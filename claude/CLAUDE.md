@@ -13,6 +13,10 @@
   deployed by `setup/apply-config.sh` (it copies files), so edit the repo, not the
   deployed copies in `~/.config`/`~/.claude` — those get overwritten on the next apply.
 
+## Model usage
+
+- Use Fable 5.1 as critic/advisor. Fan out bounded implementation work to Opus 5 agents.
+
 ## Conventions
 
 - Never commit, push, or stage changes — I handle all git operations myself.

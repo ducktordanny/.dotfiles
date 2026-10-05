@@ -5,7 +5,7 @@
     "command": "~/.claude/statusline.sh"
   },
   "effortLevel": "xhigh",
-  "outputStyle": "Concise",
+  "outputStyle": "I Have ADHD",
   "tui": "fullscreen",
   "editorMode": "vim",
   "enabledPlugins": {
