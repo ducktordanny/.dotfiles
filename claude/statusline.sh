@@ -2,8 +2,19 @@
 # Read JSON data that Claude Code sends to stdin
 input=$(cat)
 
-# Presence/notify helpers (sourced — defines cn_* functions, reads no stdin)
-source ~/.claude/lib/claude-notify.sh
+# Fast presence check (tmux only) — cheap enough for every statusline render.
+# Drives the focus glyph below: 👀 when this is the pane you're viewing, 💤 otherwise.
+cn_watching_fast() {
+	[ -z "${TMUX:-}" ] && return 1
+	local args=(-p)
+	[ -n "${TMUX_PANE:-}" ] && args+=(-t "$TMUX_PANE")
+	case "$(tmux display-message "${args[@]}" \
+		'#{window_active}:#{pane_active}:#{session_attached}' 2>/dev/null)" in
+		1:1:0) return 1 ;;   # active pane but nobody attached
+		1:1:*) return 0 ;;   # active pane + window + client attached
+		*)     return 1 ;;   # some other window/pane
+	esac
+}
 
 # Extract fields using jq
 MODEL=$(echo "$input" | jq -r '.model.display_name')

@@ -28,21 +28,5 @@
       "Read(./.git/**)",
       "Read(~/.ssh/**)"
     ]
-  },
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          { "type": "command", "command": "~/.claude/lib/claude-notify.sh" }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "hooks": [
-          { "type": "command", "command": "~/.claude/lib/claude-notify.sh" }
-        ]
-      }
-    ]
   }
 }
