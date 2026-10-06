@@ -14,7 +14,7 @@
   },
   "cleanupPeriodDays": 365,
   "permissions": {
-    "allow": ["Bash"],
+    "allow": ["Bash", "Read(~/.ai-dashboard/uploads/**)"],
     "deny": [
       "Bash(*chmod*)",
       "Bash(*exec*)",
