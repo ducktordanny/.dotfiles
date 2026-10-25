@@ -20,6 +20,7 @@
 ## Conventions
 
 - I handle all git operations myself. Never push or stage changes. Don't commit either, unless I explicitly tell you to — then you may commit.
+  Commits must not include a Claude co-author section (no `Co-Authored-By` trailer).
 - Remind me to commit at logical checkpoints and suggest a short commit message (max 50 characters).
 - Keep code comments minimal — only comment what the code can't express (a constraint,
   a non-obvious "why"). Never add comments that narrate changes or restate the code.
